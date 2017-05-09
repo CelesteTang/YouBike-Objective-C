@@ -353,10 +353,6 @@
                             <constraint firstItem="I3I-lR-bjb" firstAttribute="width" secondItem="h9u-k8-YGN" secondAttribute="width" multiplier="1:4.67" id="y9m-rm-DzQ"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="logoImage" destination="I3I-lR-bjb" id="475-ka-FO7"/>
-                        <outlet property="titleLabel" destination="qPn-0k-Psa" id="MW6-ju-tU9"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdK-Yz-c58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -444,9 +440,6 @@
                                     <segment title="" image="icon-list"/>
                                     <segment title="" image="icon-grid"/>
                                 </segments>
-                                <connections>
-                                    <action selector="indexChanged:" destination="bcR-vA-Il8" eventType="valueChanged" id="EEy-QA-QFN"/>
-                                </connections>
                             </segmentedControl>
                         </barButtonItem>
                     </navigationItem>

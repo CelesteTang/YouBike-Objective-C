@@ -106,6 +106,13 @@
                 <constraint firstAttribute="bottom" secondItem="QN1-km-iw6" secondAttribute="bottom" constant="58" id="wGp-Xu-2AN"/>
                 <constraint firstItem="CtW-5g-R2x" firstAttribute="leading" secondItem="kf2-8b-YVP" secondAttribute="leading" constant="17" id="xW4-93-azT"/>
             </constraints>
+            <connections>
+                <outlet property="addressLabel" destination="QN1-km-iw6" id="XaP-AZ-4mi"/>
+                <outlet property="markerImageView" destination="CtW-5g-R2x" id="dF7-cS-fcX"/>
+                <outlet property="nameLabel" destination="zxL-DZ-RCj" id="rHL-1l-oaQ"/>
+                <outlet property="numberLabel" destination="J2q-w4-mRz" id="4ef-H2-j0p"/>
+                <outlet property="viewMapButton" destination="o7U-oO-VeN" id="66u-9W-8w7"/>
+            </connections>
             <point key="canvasLocation" x="19.5" y="-48"/>
         </tableViewCell>
     </objects>

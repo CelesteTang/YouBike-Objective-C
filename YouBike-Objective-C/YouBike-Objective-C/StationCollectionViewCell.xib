@@ -58,8 +58,8 @@
             </constraints>
             <size key="customSize" width="166" height="166"/>
             <connections>
-                <outlet property="nameLabel" destination="e7j-J2-X6V" id="t5f-Kb-rN0"/>
-                <outlet property="numberLabel" destination="w7l-R2-0f7" id="UOA-vh-3Af"/>
+                <outlet property="nameLabel" destination="e7j-J2-X6V" id="8kj-Ek-c49"/>
+                <outlet property="numberLabel" destination="w7l-R2-0f7" id="Vtb-Kr-2Q2"/>
             </connections>
             <point key="canvasLocation" x="-98" y="-42"/>
         </collectionViewCell>

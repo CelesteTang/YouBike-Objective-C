@@ -10,4 +10,8 @@
 
 @interface StationCollectionViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
+
 @end

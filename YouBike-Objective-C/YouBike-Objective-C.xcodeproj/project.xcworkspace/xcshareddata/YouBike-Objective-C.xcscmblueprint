@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "06879C397551D2C7E1DC47DBEDC9096B4ADF98DD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "06879C397551D2C7E1DC47DBEDC9096B4ADF98DD" : 9223372036854775807,
+    "EB6479998B9F198B60A27EE6BD42D4D1CB28B942" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8DD34373-9991-4F6E-97F0-B655DD73AF09",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "06879C397551D2C7E1DC47DBEDC9096B4ADF98DD" : "YouBike-Objective-C\/",
+    "EB6479998B9F198B60A27EE6BD42D4D1CB28B942" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "YouBike-Objective-C",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "YouBike-Objective-C\/YouBike-Objective-C.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CelesteTang\/YouBike-Objective-C.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "06879C397551D2C7E1DC47DBEDC9096B4ADF98DD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CelesteTang\/YouBike.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EB6479998B9F198B60A27EE6BD42D4D1CB28B942"
+    }
+  ]
+}

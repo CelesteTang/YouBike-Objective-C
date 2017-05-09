@@ -10,6 +10,7 @@
 #import "StationViewController.h"
 #import "StationTableViewCell.h"
 #import "StationCollectionViewCell.h"
+#import "Station.h"
 
 @interface StationViewController ()
 

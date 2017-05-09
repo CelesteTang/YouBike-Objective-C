@@ -24,6 +24,7 @@
 		43776B7D1EC192C2006ECDF1 /* StationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B7B1EC192C2006ECDF1 /* StationCollectionViewCell.m */; };
 		43776B7E1EC192C2006ECDF1 /* StationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43776B7C1EC192C2006ECDF1 /* StationCollectionViewCell.xib */; };
 		43776B821EC193F1006ECDF1 /* ProfileNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B811EC193F1006ECDF1 /* ProfileNavigationController.m */; };
+		5A6AF0C7ED5CE462BEA1AB74 /* libPods-YouBike-Objective-C.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E320241DDCF23B41AC3680C /* libPods-YouBike-Objective-C.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,9 @@
 		43776B7C1EC192C2006ECDF1 /* StationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StationCollectionViewCell.xib; sourceTree = "<group>"; };
 		43776B801EC193F1006ECDF1 /* ProfileNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileNavigationController.h; sourceTree = "<group>"; };
 		43776B811EC193F1006ECDF1 /* ProfileNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileNavigationController.m; sourceTree = "<group>"; };
+		5E320241DDCF23B41AC3680C /* libPods-YouBike-Objective-C.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YouBike-Objective-C.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3ED17A9173638A27B9D8552 /* Pods-YouBike-Objective-C.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouBike-Objective-C.release.xcconfig"; path = "Pods/Target Support Files/Pods-YouBike-Objective-C/Pods-YouBike-Objective-C.release.xcconfig"; sourceTree = "<group>"; };
+		B93BF91CAB36C79AF54808AF /* Pods-YouBike-Objective-C.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YouBike-Objective-C.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YouBike-Objective-C/Pods-YouBike-Objective-C.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,17 +67,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A6AF0C7ED5CE462BEA1AB74 /* libPods-YouBike-Objective-C.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25AC81ABD520CCB50BF82340 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E320241DDCF23B41AC3680C /* libPods-YouBike-Objective-C.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		43776B3D1EC1550B006ECDF1 = {
 			isa = PBXGroup;
 			children = (
 				43776B481EC1550B006ECDF1 /* YouBike-Objective-C */,
 				43776B471EC1550B006ECDF1 /* Products */,
+				D8FD2E74276FB18F1441CF41 /* Pods */,
+				25AC81ABD520CCB50BF82340 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,6 +151,15 @@
 			name = Station;
 			sourceTree = "<group>";
 		};
+		D8FD2E74276FB18F1441CF41 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B93BF91CAB36C79AF54808AF /* Pods-YouBike-Objective-C.debug.xcconfig */,
+				A3ED17A9173638A27B9D8552 /* Pods-YouBike-Objective-C.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,9 +167,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43776B601EC1550B006ECDF1 /* Build configuration list for PBXNativeTarget "YouBike-Objective-C" */;
 			buildPhases = (
+				7CCB94F5816809A2FD10AF03 /* [CP] Check Pods Manifest.lock */,
 				43776B421EC1550B006ECDF1 /* Sources */,
 				43776B431EC1550B006ECDF1 /* Frameworks */,
 				43776B441EC1550B006ECDF1 /* Resources */,
+				9EA354FFCFA70DF59BA3AE35 /* [CP] Embed Pods Frameworks */,
+				0CF8B963E24515312D6652F6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -204,6 +231,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0CF8B963E24515312D6652F6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YouBike-Objective-C/Pods-YouBike-Objective-C-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CCB94F5816809A2FD10AF03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9EA354FFCFA70DF59BA3AE35 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YouBike-Objective-C/Pods-YouBike-Objective-C-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		43776B421EC1550B006ECDF1 /* Sources */ = {
@@ -339,6 +414,7 @@
 		};
 		43776B611EC1550B006ECDF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B93BF91CAB36C79AF54808AF /* Pods-YouBike-Objective-C.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V35V7R5VNP;
@@ -351,6 +427,7 @@
 		};
 		43776B621EC1550B006ECDF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3ED17A9173638A27B9D8552 /* Pods-YouBike-Objective-C.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V35V7R5VNP;

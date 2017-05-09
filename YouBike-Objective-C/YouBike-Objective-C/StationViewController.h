@@ -10,4 +10,10 @@
 
 @interface StationViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *listGridSegmentedControl;
+
 @end

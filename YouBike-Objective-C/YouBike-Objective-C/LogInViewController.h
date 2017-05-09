@@ -10,4 +10,10 @@
 
 @interface LogInViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+
+@property (weak, nonatomic) IBOutlet UIButton *logInButton;
+
 @end

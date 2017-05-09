@@ -10,4 +10,16 @@
 
 @interface ProfileViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *cardBaseView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
+@property (weak, nonatomic) IBOutlet UIView *photoBorderView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *goToFbButton;
+
 @end

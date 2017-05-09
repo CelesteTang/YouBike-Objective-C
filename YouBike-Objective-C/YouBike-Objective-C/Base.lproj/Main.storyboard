@@ -163,6 +163,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jiX-Gx-1N3"/>
+                    <connections>
+                        <outlet property="mapStyleSegmentedControl" destination="UiJ-nC-RT9" id="fHV-JP-0ww"/>
+                        <outlet property="mapView" destination="3JS-ro-1pY" id="H5b-Yv-pTW"/>
+                        <outlet property="tableView" destination="KJ2-ee-hEn" id="7UJ-GY-UuM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cT-HB-uIK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -272,6 +277,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="YouBike" id="8Ne-uM-G8z"/>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="d04-88-m5R" id="k6B-AM-Jdo"/>
+                        <outlet property="cardBaseView" destination="DD1-Uj-smC" id="J8v-X2-alJ"/>
+                        <outlet property="goToFbButton" destination="Q94-De-dQc" id="pCe-JI-2nE"/>
+                        <outlet property="photoBorderView" destination="uCC-EN-Bex" id="2qW-W0-agh"/>
+                        <outlet property="photoImageView" destination="MmV-Ox-xGs" id="Svg-bC-ytv"/>
+                        <outlet property="userNameLabel" destination="ERs-Gz-sO1" id="8Ub-Ry-1bJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NpO-Jc-zul" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -353,6 +366,11 @@
                             <constraint firstItem="I3I-lR-bjb" firstAttribute="width" secondItem="h9u-k8-YGN" secondAttribute="width" multiplier="1:4.67" id="y9m-rm-DzQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="appNameLabel" destination="qPn-0k-Psa" id="sNz-Ca-CHv"/>
+                        <outlet property="logInButton" destination="RJv-YD-Neg" id="Rkg-Bi-L0F"/>
+                        <outlet property="logoImageView" destination="I3I-lR-bjb" id="g7F-it-S7z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdK-Yz-c58" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -443,6 +461,11 @@
                             </segmentedControl>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="4mu-h2-QdU" id="tYC-wu-zT6"/>
+                        <outlet property="listGridSegmentedControl" destination="eh1-0g-sVa" id="J5p-rY-KJA"/>
+                        <outlet property="tableView" destination="O5J-wT-pFh" id="Je4-Wx-f1a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4K-IT-SMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

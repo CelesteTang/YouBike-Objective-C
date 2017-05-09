@@ -87,13 +87,33 @@
     cell.viewMapButton.layer.cornerRadius = 4;
     cell.viewMapButton.layer.borderWidth = 1;
     cell.viewMapButton.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:204/255 green:113/255 blue:93/255 alpha:1]);
-    [cell.viewMapButton addTarget:self action:@selector(viewMap) forControlEvents:UIControlEventTouchUpInside];
+    [cell.viewMapButton addTarget:self action:@selector(viewMap:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
 
-- (void)viewMap {
+- (void)viewMap: (UIButton *) sender {
 
+    [self performSegueWithIdentifier:@"viewMap" sender:sender];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+//    UIButton *button = sender;
+//    StationTableViewCell *cell = button.superview.superview;
+//    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    
+//    mapViewController.receivedStations = [stations[indexPath.row]]
+    
+    [self.navigationController pushViewController:mapViewController animated:true];
+    
 }
 
 #pragma mark - Collection view data source
@@ -124,5 +144,15 @@
     return cell;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    
+//    mapViewController.receivedStations = [stations[indexPath.row]]
+    
+    [self.navigationController pushViewController:mapViewController animated:true];
+
+}
 
 @end

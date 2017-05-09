@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  StationNavigationController.h
 //  YouBike-Objective-C
 //
 //  Created by 湯芯瑜 on 2017/5/9.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface StationNavigationController : UINavigationController
 
 @end
-

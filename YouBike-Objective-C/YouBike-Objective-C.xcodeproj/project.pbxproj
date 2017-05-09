@@ -9,11 +9,21 @@
 /* Begin PBXBuildFile section */
 		43776B4B1EC1550B006ECDF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B4A1EC1550B006ECDF1 /* main.m */; };
 		43776B4E1EC1550B006ECDF1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B4D1EC1550B006ECDF1 /* AppDelegate.m */; };
-		43776B511EC1550B006ECDF1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B501EC1550B006ECDF1 /* ViewController.m */; };
 		43776B541EC1550B006ECDF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43776B521EC1550B006ECDF1 /* Main.storyboard */; };
 		43776B571EC1550B006ECDF1 /* YouBike_Objective_C.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43776B551EC1550B006ECDF1 /* YouBike_Objective_C.xcdatamodeld */; };
 		43776B591EC1550B006ECDF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43776B581EC1550B006ECDF1 /* Assets.xcassets */; };
 		43776B5C1EC1550B006ECDF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43776B5A1EC1550B006ECDF1 /* LaunchScreen.storyboard */; };
+		43776B651EC19095006ECDF1 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B641EC19095006ECDF1 /* LogInViewController.m */; };
+		43776B681EC191BF006ECDF1 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B671EC191BF006ECDF1 /* TabBarController.m */; };
+		43776B6B1EC191E5006ECDF1 /* StationNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B6A1EC191E5006ECDF1 /* StationNavigationController.m */; };
+		43776B6E1EC1920E006ECDF1 /* StationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B6D1EC1920E006ECDF1 /* StationViewController.m */; };
+		43776B711EC1922C006ECDF1 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B701EC1922C006ECDF1 /* ProfileViewController.m */; };
+		43776B741EC1924A006ECDF1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B731EC1924A006ECDF1 /* MapViewController.m */; };
+		43776B781EC192AB006ECDF1 /* StationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B761EC192AB006ECDF1 /* StationTableViewCell.m */; };
+		43776B791EC192AB006ECDF1 /* StationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43776B771EC192AB006ECDF1 /* StationTableViewCell.xib */; };
+		43776B7D1EC192C2006ECDF1 /* StationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B7B1EC192C2006ECDF1 /* StationCollectionViewCell.m */; };
+		43776B7E1EC192C2006ECDF1 /* StationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43776B7C1EC192C2006ECDF1 /* StationCollectionViewCell.xib */; };
+		43776B821EC193F1006ECDF1 /* ProfileNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B811EC193F1006ECDF1 /* ProfileNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +31,31 @@
 		43776B4A1EC1550B006ECDF1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		43776B4C1EC1550B006ECDF1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		43776B4D1EC1550B006ECDF1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		43776B4F1EC1550B006ECDF1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		43776B501EC1550B006ECDF1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		43776B531EC1550B006ECDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		43776B561EC1550B006ECDF1 /* YouBike_Objective_C.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YouBike_Objective_C.xcdatamodel; sourceTree = "<group>"; };
 		43776B581EC1550B006ECDF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43776B5B1EC1550B006ECDF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43776B5D1EC1550B006ECDF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43776B631EC19095006ECDF1 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		43776B641EC19095006ECDF1 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		43776B661EC191BF006ECDF1 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		43776B671EC191BF006ECDF1 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		43776B691EC191E5006ECDF1 /* StationNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationNavigationController.h; sourceTree = "<group>"; };
+		43776B6A1EC191E5006ECDF1 /* StationNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationNavigationController.m; sourceTree = "<group>"; };
+		43776B6C1EC1920E006ECDF1 /* StationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationViewController.h; sourceTree = "<group>"; };
+		43776B6D1EC1920E006ECDF1 /* StationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationViewController.m; sourceTree = "<group>"; };
+		43776B6F1EC1922C006ECDF1 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		43776B701EC1922C006ECDF1 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		43776B721EC1924A006ECDF1 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		43776B731EC1924A006ECDF1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		43776B751EC192AB006ECDF1 /* StationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationTableViewCell.h; sourceTree = "<group>"; };
+		43776B761EC192AB006ECDF1 /* StationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationTableViewCell.m; sourceTree = "<group>"; };
+		43776B771EC192AB006ECDF1 /* StationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StationTableViewCell.xib; sourceTree = "<group>"; };
+		43776B7A1EC192C2006ECDF1 /* StationCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationCollectionViewCell.h; sourceTree = "<group>"; };
+		43776B7B1EC192C2006ECDF1 /* StationCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationCollectionViewCell.m; sourceTree = "<group>"; };
+		43776B7C1EC192C2006ECDF1 /* StationCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StationCollectionViewCell.xib; sourceTree = "<group>"; };
+		43776B801EC193F1006ECDF1 /* ProfileNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileNavigationController.h; sourceTree = "<group>"; };
+		43776B811EC193F1006ECDF1 /* ProfileNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +90,19 @@
 			children = (
 				43776B4C1EC1550B006ECDF1 /* AppDelegate.h */,
 				43776B4D1EC1550B006ECDF1 /* AppDelegate.m */,
-				43776B4F1EC1550B006ECDF1 /* ViewController.h */,
-				43776B501EC1550B006ECDF1 /* ViewController.m */,
+				43776B661EC191BF006ECDF1 /* TabBarController.h */,
+				43776B671EC191BF006ECDF1 /* TabBarController.m */,
+				43776B691EC191E5006ECDF1 /* StationNavigationController.h */,
+				43776B6A1EC191E5006ECDF1 /* StationNavigationController.m */,
+				43776B801EC193F1006ECDF1 /* ProfileNavigationController.h */,
+				43776B811EC193F1006ECDF1 /* ProfileNavigationController.m */,
+				43776B631EC19095006ECDF1 /* LogInViewController.h */,
+				43776B641EC19095006ECDF1 /* LogInViewController.m */,
+				43776B7F1EC192CF006ECDF1 /* Station */,
+				43776B6F1EC1922C006ECDF1 /* ProfileViewController.h */,
+				43776B701EC1922C006ECDF1 /* ProfileViewController.m */,
+				43776B721EC1924A006ECDF1 /* MapViewController.h */,
+				43776B731EC1924A006ECDF1 /* MapViewController.m */,
 				43776B521EC1550B006ECDF1 /* Main.storyboard */,
 				43776B581EC1550B006ECDF1 /* Assets.xcassets */,
 				43776B5A1EC1550B006ECDF1 /* LaunchScreen.storyboard */,
@@ -80,6 +119,21 @@
 				43776B4A1EC1550B006ECDF1 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43776B7F1EC192CF006ECDF1 /* Station */ = {
+			isa = PBXGroup;
+			children = (
+				43776B6C1EC1920E006ECDF1 /* StationViewController.h */,
+				43776B6D1EC1920E006ECDF1 /* StationViewController.m */,
+				43776B751EC192AB006ECDF1 /* StationTableViewCell.h */,
+				43776B761EC192AB006ECDF1 /* StationTableViewCell.m */,
+				43776B771EC192AB006ECDF1 /* StationTableViewCell.xib */,
+				43776B7A1EC192C2006ECDF1 /* StationCollectionViewCell.h */,
+				43776B7B1EC192C2006ECDF1 /* StationCollectionViewCell.m */,
+				43776B7C1EC192C2006ECDF1 /* StationCollectionViewCell.xib */,
+			);
+			name = Station;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +197,9 @@
 			files = (
 				43776B5C1EC1550B006ECDF1 /* LaunchScreen.storyboard in Resources */,
 				43776B591EC1550B006ECDF1 /* Assets.xcassets in Resources */,
+				43776B791EC192AB006ECDF1 /* StationTableViewCell.xib in Resources */,
 				43776B541EC1550B006ECDF1 /* Main.storyboard in Resources */,
+				43776B7E1EC192C2006ECDF1 /* StationCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,9 +211,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				43776B571EC1550B006ECDF1 /* YouBike_Objective_C.xcdatamodeld in Sources */,
-				43776B511EC1550B006ECDF1 /* ViewController.m in Sources */,
+				43776B651EC19095006ECDF1 /* LogInViewController.m in Sources */,
+				43776B711EC1922C006ECDF1 /* ProfileViewController.m in Sources */,
+				43776B741EC1924A006ECDF1 /* MapViewController.m in Sources */,
+				43776B781EC192AB006ECDF1 /* StationTableViewCell.m in Sources */,
+				43776B821EC193F1006ECDF1 /* ProfileNavigationController.m in Sources */,
+				43776B681EC191BF006ECDF1 /* TabBarController.m in Sources */,
+				43776B7D1EC192C2006ECDF1 /* StationCollectionViewCell.m in Sources */,
+				43776B6B1EC191E5006ECDF1 /* StationNavigationController.m in Sources */,
 				43776B4E1EC1550B006ECDF1 /* AppDelegate.m in Sources */,
 				43776B4B1EC1550B006ECDF1 /* main.m in Sources */,
+				43776B6E1EC1920E006ECDF1 /* StationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +380,7 @@
 				43776B621EC1550B006ECDF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -6,9 +6,10 @@
 //  Copyright © 2017年 Hsin-Yu Tang. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "StationViewController.h"
 #import "StationTableViewCell.h"
-#import <UIKit/UIKit.h>
+#import "StationCollectionViewCell.h"
 
 @interface StationViewController ()
 
@@ -76,6 +77,7 @@
     }
     
     cell.markerImageView.image = [UIImage imageNamed:@"iconMarker"];
+    
 //    NSInteger *row = indexPath.row;
 
     cell.nameLabel.text = @"";
@@ -108,9 +110,16 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StationCollectionViewCell" forIndexPath:indexPath];
+    StationCollectionViewCell *cell = (StationCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"StationTableViewCell" forIndexPath:indexPath];
+    if (cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StationCollectionViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
     
-    // Configure the cell...
+//    NSInteger *item = indexPath.item;
+    
+    cell.nameLabel.text = @"";
+    cell.numberLabel.text = @"";
     
     return cell;
 }

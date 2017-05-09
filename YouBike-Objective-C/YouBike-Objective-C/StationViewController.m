@@ -7,6 +7,8 @@
 //
 
 #import "StationViewController.h"
+#import "StationTableViewCell.h"
+#import <UIKit/UIKit.h>
 
 @interface StationViewController ()
 
@@ -24,7 +26,14 @@
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    UINib *nibOfTable = [UINib nibWithNibName:@"StationTableViewCell" bundle:nil];
+    [_tableView registerNib:nibOfTable forCellReuseIdentifier:@"StationTableViewCell"];
     
+    _collectionView.delegate = self;
+    _collectionView.dataSource = self;
+    UINib *nibOfCollection = [UINib nibWithNibName:@"StationCollectionViewCell" bundle:nil];
+    [_collectionView registerNib:nibOfCollection forCellWithReuseIdentifier:@"StationCollectionViewCell"];
+
     [_listGridSegmentedControl addTarget:self action:@selector(indexChanged:) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -59,11 +68,52 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StationTableViewCell" forIndexPath:indexPath];
+    
+    StationTableViewCell *cell = (StationTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"StationTableViewCell" forIndexPath:indexPath];
+    if (cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StationTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    cell.markerImageView.image = [UIImage imageNamed:@"iconMarker"];
+//    NSInteger *row = indexPath.row;
+
+    cell.nameLabel.text = @"";
+    cell.addressLabel.text = @"";
+    cell.numberLabel.text = @"";
+
+    cell.viewMapButton.layer.cornerRadius = 4;
+    cell.viewMapButton.layer.borderWidth = 1;
+    cell.viewMapButton.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:204/255 green:113/255 blue:93/255 alpha:1]);
+    [cell.viewMapButton addTarget:self action:@selector(viewMap) forControlEvents:UIControlEventTouchUpInside];
+    
+    return cell;
+}
+
+- (void)viewMap {
+
+}
+
+#pragma mark - Collection view data source
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+
+    return 5;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"StationCollectionViewCell" forIndexPath:indexPath];
     
     // Configure the cell...
     
     return cell;
 }
+
 
 @end

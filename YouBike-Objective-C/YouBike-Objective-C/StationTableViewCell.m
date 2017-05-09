@@ -10,6 +10,12 @@
 
 @implementation StationTableViewCell
 
+@synthesize markerImageView = _markerImageView;
+@synthesize nameLabel = _nameLabel;
+@synthesize addressLabel = _addressLabel;
+@synthesize numberLabel = _numberLabel;
+@synthesize viewMapButton = _viewMapButton;
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

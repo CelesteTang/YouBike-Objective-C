@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StationViewController : UIViewController
+@interface StationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

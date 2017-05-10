@@ -17,6 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"pattern-wood.jpg"]];
+    
+    _logoImageView.layer.cornerRadius = _logoImageView.frame.size.width / 2;
+    _logoImageView.layer.borderWidth = 1;
+    _logoImageView.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:61/255 green:52/255 blue:66/255 alpha:1]);
+    
     [_logInButton addTarget:self action:@selector(logIn) forControlEvents:UIControlEventTouchUpInside];
 }
 

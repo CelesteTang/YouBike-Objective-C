@@ -23,8 +23,8 @@
 
     self.title = @"YouBike";
     
-    _tableView.hidden = false;
-    _collectionView.hidden = true;
+    _tableView.hidden = NO;
+    _collectionView.hidden = YES;
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -44,12 +44,12 @@
     switch (sender.selectedSegmentIndex) {
             
         case 0:
-            _tableView.hidden = true;
-            _collectionView.hidden = false;
+            _tableView.hidden = YES;
+            _collectionView.hidden = NO;
             
         case 1:
-            _tableView.hidden = false;
-            _collectionView.hidden = true;
+            _tableView.hidden = NO;
+            _collectionView.hidden = YES;
             
         default:
             break;
@@ -119,7 +119,7 @@
     
 //    mapViewController.receivedStations = [stations[indexPath.row]]
     
-    [self.navigationController pushViewController:mapViewController animated:true];
+    [self.navigationController pushViewController:mapViewController animated:YES];
     
 }
 
@@ -158,7 +158,7 @@
     
 //    mapViewController.receivedStations = [stations[indexPath.row]]
     
-    [self.navigationController pushViewController:mapViewController animated:true];
+    [self.navigationController pushViewController:mapViewController animated:YES];
 
 }
 

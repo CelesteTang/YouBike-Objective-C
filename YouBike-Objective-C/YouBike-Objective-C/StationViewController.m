@@ -41,15 +41,19 @@
 
 - (void)indexChanged: (UISegmentedControl *) sender {
     
+    NSLog(@"qq");
+    NSLog(@"%d", sender.selectedSegmentIndex);
     switch (sender.selectedSegmentIndex) {
             
         case 0:
             _tableView.hidden = YES;
             _collectionView.hidden = NO;
+            break;
             
         case 1:
             _tableView.hidden = NO;
             _collectionView.hidden = YES;
+            break;
             
         default:
             break;
@@ -77,11 +81,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    StationTableViewCell *cell = (StationTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"StationTableViewCell" forIndexPath:indexPath];
-    if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StationTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }
+//    let cell = tableView.dequeueReusableCell(withIdentifier: "StationTableViewCell", for: indexPath) as! StationTableViewCell
+    
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"StationTableViewCell" forIndexPath: indexPath];
+//    
+//    // 型別檢查 (as?)
+//    if ([cell isKindOfClass:[StationTableViewCell class]]) {
+//        
+//        StationTableViewCell *stationCell = (StationTableViewCell *)cell;
+//        
+//    }
+    
+    StationTableViewCell *cell = (StationTableViewCell *) [tableView dequeueReusableCellWithIdentifier:@"StationTableViewCell" forIndexPath:indexPath];
+    
+//    if (cell == nil) {
+//        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StationTableViewCell" owner:self options:nil];
+//        cell = [nib objectAtIndex:0];
+//    }
     
     cell.markerImageView.image = [UIImage imageNamed:@"iconMarker"];
     

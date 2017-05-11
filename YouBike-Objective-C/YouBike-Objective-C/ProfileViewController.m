@@ -31,6 +31,9 @@
 
     NSString *pictureURL = [NSUserDefaults.standardUserDefaults stringForKey:@"url"];
     NSURL *url = [NSURL URLWithString:pictureURL];
+    
+    if (url == nil) { /* error handling */ }
+    
     NSData *data = [NSData dataWithContentsOfURL:url];
     _photoImageView.image = [UIImage imageWithData:data];
 

@@ -49,47 +49,17 @@
     directionRequest.transportType = MKDirectionsTransportTypeWalking;
 
     MKDirections *directions = [[MKDirections alloc]initWithRequest:directionRequest];
-
-    
-    
-//    let directions = MKDirections(request: directionRequest)
-//    
-//    directions.calculate { (response, error) in
-//        guard let response = response else {
-//            if let error = error {
-//                print("Error: \(error)")
-//            }
-//            return
-//        }
-//        
-//        for route in response.routes {
-//            self.mapView.add(route.polyline)
-//            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-//        }
-//    }
-//    let source = MKMapItem(placemark: MKPlacemark(coordinate: (locationManager.location?.coordinate)!, addressDictionary: nil))
-//    let destination = MKMapItem(placemark: MKPlacemark(coordinate: stopLocation, addressDictionary: nil))
-//    
-//    requestDirections(source: source, destination: destination) { (response, error) in
-//        
-//        guard let response = response else {
-//            
-//            if let error = error {
-//                print("Error: \(error)")
-//                
-//            }
-//            
-//            return
-//        }
-//        
-//        
-//        for route in response.routes {
-//            
-//            self.mapView.add(route.polyline)
-//            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-//        }
-//    }
-
+    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSLog(@"%@", response);
+        NSLog(@"%@", error);
+        
+        for (MKRoute *route in response.routes) {
+        
+            [_mapView addOverlay:route.polyline];
+            [_mapView setVisibleMapRect:route.polyline.boundingMapRect animated:YES];
+        };
+    }];
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -109,6 +79,7 @@
     [super viewWillDisappear:animated];
     
     self.tabBarController.tabBar.hidden = NO;
+//    [locationManager stopUpdatingLocation];
 }
 
 - (void)mapStyleSwitch: (UISegmentedControl *) sender {
@@ -165,6 +136,16 @@
     cell.viewMapButton.hidden = YES;
     
     return cell;
+}
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay {
+
+    MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc]initWithPolyline:overlay];
+    renderer.strokeColor = [UIColor colorWithRed:201/255 green:28/255 blue:187/255 alpha:1];
+    renderer.lineWidth = 10;
+    
+    return renderer;
+
 }
 
 @end

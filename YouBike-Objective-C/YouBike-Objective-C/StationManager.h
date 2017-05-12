@@ -11,6 +11,9 @@
 
 #endif /* StationManager_h */
 
-@interface StationManager ()
+@interface StationManager : NSObject
+
+@property (strong, nonatomic) NSString *token;
+@property (strong, nonatomic) NSString *tokenType;
 
 @end

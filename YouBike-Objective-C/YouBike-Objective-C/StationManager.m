@@ -11,13 +11,6 @@
 #import <UIKit/UIKit.h>
 #import "StationManager.h"
 
-@interface StationManager : NSObject
-
-@property (strong, nonatomic) NSString *token;
-@property (strong, nonatomic) NSString *tokenType;
-
-@end
-
 @implementation StationManager : NSObject
 
 

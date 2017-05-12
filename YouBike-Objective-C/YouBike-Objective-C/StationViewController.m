@@ -99,15 +99,13 @@
 
 - (void)viewMap: (UIButton *) sender {
 
-    [self performSegueWithIdentifier:@"viewMap" sender:sender];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-//    UIButton *button = sender;
-//    StationTableViewCell *cell = button.superview.superview;
-//    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
-
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    
+//    mapViewController.receivedStations = [stations[indexPath.row]]
+    
+    [self.navigationController pushViewController:mapViewController animated:YES];
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

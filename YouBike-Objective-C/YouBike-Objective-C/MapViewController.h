@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *mapStyleSegmentedControl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *mapSegmentedControl;
+
 
 @end

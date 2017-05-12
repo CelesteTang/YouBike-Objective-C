@@ -40,16 +40,18 @@
 }
 
 - (void)indexChanged: (UISegmentedControl *) sender {
-    
+        
     switch (sender.selectedSegmentIndex) {
             
         case 0:
-            _tableView.hidden = YES;
-            _collectionView.hidden = NO;
-            
-        case 1:
             _tableView.hidden = NO;
             _collectionView.hidden = YES;
+            break;
+            
+        case 1:
+            _tableView.hidden = YES;
+            _collectionView.hidden = NO;
+            break;
             
         default:
             break;
@@ -77,11 +79,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    StationTableViewCell *cell = (StationTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"StationTableViewCell" forIndexPath:indexPath];
-    if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StationTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }
+    StationTableViewCell *cell = (StationTableViewCell *) [tableView dequeueReusableCellWithIdentifier:@"StationTableViewCell" forIndexPath:indexPath];
     
     cell.markerImageView.image = [UIImage imageNamed:@"iconMarker"];
     
@@ -101,15 +99,13 @@
 
 - (void)viewMap: (UIButton *) sender {
 
-    [self performSegueWithIdentifier:@"viewMap" sender:sender];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-//    UIButton *button = sender;
-//    StationTableViewCell *cell = button.superview.superview;
-//    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
-
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    
+//    mapViewController.receivedStations = [stations[indexPath.row]]
+    
+    [self.navigationController pushViewController:mapViewController animated:YES];
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

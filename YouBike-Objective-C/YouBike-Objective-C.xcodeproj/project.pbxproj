@@ -75,6 +75,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1039493A1EC3208200E21D61 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		25AC81ABD520CCB50BF82340 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +111,7 @@
 		43776B481EC1550B006ECDF1 /* YouBike-Objective-C */ = {
 			isa = PBXGroup;
 			children = (
+				1039493A1EC3208200E21D61 /* Model */,
 				43776B4C1EC1550B006ECDF1 /* AppDelegate.h */,
 				43776B4D1EC1550B006ECDF1 /* AppDelegate.m */,
 				43776B661EC191BF006ECDF1 /* TabBarController.h */,
@@ -196,7 +204,7 @@
 				TargetAttributes = {
 					43776B451EC1550B006ECDF1 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = V35V7R5VNP;
+						DevelopmentTeam = U9RNY5KJSC;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -419,7 +427,7 @@
 			baseConfigurationReference = B93BF91CAB36C79AF54808AF /* Pods-YouBike-Objective-C.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V35V7R5VNP;
+				DEVELOPMENT_TEAM = U9RNY5KJSC;
 				INFOPLIST_FILE = "YouBike-Objective-C/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hsinyutang.YouBike-Objective-C";
@@ -432,7 +440,7 @@
 			baseConfigurationReference = A3ED17A9173638A27B9D8552 /* Pods-YouBike-Objective-C.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = V35V7R5VNP;
+				DEVELOPMENT_TEAM = U9RNY5KJSC;
 				INFOPLIST_FILE = "YouBike-Objective-C/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hsinyutang.YouBike-Objective-C";

@@ -18,6 +18,78 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+//    self.title = receivedStations[0].name;
+
+    // Stationstop and Pin
+//    CLLocationCoordinate2D *stopLocation = [CLLocationCoordinate2DMake(receivedStations[0].latitude, receivedStations[0].longitude)];
+//    [_mapView setRegion:MKCoordinateRegionMakeWithDistance(stopLocation, 800, 800) animated:YES];
+//    MKAnnotationView *pin = [[MKAnnotationView alloc] init];
+//    [_mapView addAnnotation:pin];
+    
+    // Current Location
+    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager requestWhenInUseAuthorization];
+    [locationManager startUpdatingLocation];
+    
+    _mapView.showsUserLocation = YES;
+    _mapView.zoomEnabled = YES;
+    
+    // Route
+    
+    _mapView.delegate = self;
+    MKDirectionsRequest *directionRequest = [[MKDirectionsRequest alloc] init];
+    MKPlacemark *source = [[MKPlacemark alloc]initWithCoordinate:locationManager.location.coordinate];
+    directionRequest.source = [[MKMapItem alloc] initWithPlacemark:source];
+//    MKPlacemark *destination = [[MKPlacemark alloc]initWithCoordinate:stopLocation];
+//    directionRequest.destination = [[MKMapItem alloc]initWithPlacemark:destination];
+    directionRequest.requestsAlternateRoutes = YES;
+    directionRequest.transportType = MKDirectionsTransportTypeWalking;
+
+    MKDirections *directions = [[MKDirections alloc]initWithRequest:directionRequest];
+
+    
+//    let directions = MKDirections(request: directionRequest)
+//    
+//    directions.calculate { (response, error) in
+//        guard let response = response else {
+//            if let error = error {
+//                print("Error: \(error)")
+//            }
+//            return
+//        }
+//        
+//        for route in response.routes {
+//            self.mapView.add(route.polyline)
+//            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+//        }
+//    }
+//    let source = MKMapItem(placemark: MKPlacemark(coordinate: (locationManager.location?.coordinate)!, addressDictionary: nil))
+//    let destination = MKMapItem(placemark: MKPlacemark(coordinate: stopLocation, addressDictionary: nil))
+//    
+//    requestDirections(source: source, destination: destination) { (response, error) in
+//        
+//        guard let response = response else {
+//            
+//            if let error = error {
+//                print("Error: \(error)")
+//                
+//            }
+//            
+//            return
+//        }
+//        
+//        
+//        for route in response.routes {
+//            
+//            self.mapView.add(route.polyline)
+//            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+//        }
+//    }
+
+    
     _tableView.delegate = self;
     _tableView.dataSource = self;
     UINib *nibOfTable = [UINib nibWithNibName:@"StationTableViewCell" bundle:nil];

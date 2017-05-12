@@ -36,6 +36,11 @@
     UINib *nibOfCollection = [UINib nibWithNibName:@"StationCollectionViewCell" bundle:nil];
     [_collectionView registerNib:nibOfCollection forCellWithReuseIdentifier:@"StationCollectionViewCell"];
     
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    [layout setSectionInset:UIEdgeInsetsMake(14, 14, 14, 14)];
+    layout.minimumLineSpacing = 14;
+    layout.itemSize = CGSizeMake(166, 166);
+    
     [_listGridSegmentedControl addTarget:self action:@selector(indexChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
@@ -134,10 +139,6 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 
     StationCollectionViewCell *cell = (StationCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"StationCollectionViewCell" forIndexPath:indexPath];
-    if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StationCollectionViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }
     
 //    NSInteger *item = indexPath.item;
     
@@ -156,21 +157,6 @@
     
     [self.navigationController pushViewController:mapViewController animated:YES];
 
-}
-
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    return CGSizeMake(166, 166);
-}
-
--(UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-
-    return UIEdgeInsetsMake(14, 14, 14, 14);
-}
-
--(CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-
-    return 14;
 }
 
 @end

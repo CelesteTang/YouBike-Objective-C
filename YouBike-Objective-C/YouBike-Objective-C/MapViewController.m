@@ -18,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    UINib *nibOfTable = [UINib nibWithNibName:@"StationTableViewCell" bundle:nil];
+    [_tableView registerNib:nibOfTable forCellReuseIdentifier:@"StationTableViewCell"];
+    
     [_mapSegmentedControl addTarget:self action:@selector(mapStyleSwitch:) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -34,6 +39,8 @@
 }
 
 - (void)mapStyleSwitch: (UISegmentedControl *) sender {
+    
+    NSLog(@"%ld", (long)sender.selectedSegmentIndex);
     
     switch (sender.selectedSegmentIndex) {
             
@@ -82,10 +89,7 @@
     cell.nameLabel.text = @"";
     cell.addressLabel.text = @"";
     cell.numberLabel.text = @"";
-    
-    cell.viewMapButton.layer.cornerRadius = 4;
-    cell.viewMapButton.layer.borderWidth = 1;
-    cell.viewMapButton.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:204/255 green:113/255 blue:93/255 alpha:1]);
+    cell.viewMapButton.hidden = YES;
     
     return cell;
 }

@@ -21,6 +21,18 @@
     [_mapSegmentedControl addTarget:self action:@selector(mapStyleSwitch:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.tabBarController.tabBar.hidden = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 - (void)mapStyleSwitch: (UISegmentedControl *) sender {
     
     switch (sender.selectedSegmentIndex) {

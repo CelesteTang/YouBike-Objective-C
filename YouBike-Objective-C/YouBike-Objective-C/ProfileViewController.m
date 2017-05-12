@@ -37,6 +37,7 @@
     NSData *data = [NSData dataWithContentsOfURL:url];
     _photoImageView.image = [UIImage imageWithData:data];
 
+    _goToFbButton.layer.cornerRadius = 10;
     [_goToFbButton addTarget:self action:@selector(goToFb) forControlEvents:UIControlEventTouchUpInside];
 }
 

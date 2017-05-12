@@ -16,4 +16,6 @@
 @property NSNumber *latitude;
 @property NSNumber *longitude;
 
+- (id)initWithName:(NSString*)name andAddress:(NSString*)address;
+
 @end

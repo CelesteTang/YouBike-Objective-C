@@ -10,9 +10,16 @@
 #import "StationViewController.h"
 #import "StationTableViewCell.h"
 #import "StationCollectionViewCell.h"
-#import "Station.h"
 
-@interface StationViewController ()
+@interface StationViewController () {
+
+    Station *station1;
+    Station *station2;
+    Station *station3;
+    Station *station4;
+    Station *station5;
+    NSArray *stations;
+}
 
 @end
 
@@ -20,7 +27,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    station1 = [[Station alloc]initWithName:@"信義區 / 捷運市政府站(3號出口)" Address:@"忠孝東路/松仁路(東南側)" NumberOfRemainingBikes:20 Latitude:25.0408578889 Longitude:121.567904444];
+    station2 = [[Station alloc]initWithName:@"大安區 / 捷運國父紀念館站(2號..." Address:@"忠孝東路四段/光復南路口(..." NumberOfRemainingBikes:3 Latitude:25.0408578889 Longitude:121.567904444];
+    station3 = [[Station alloc]initWithName:@"信義區 / 台北市政府" Address:@"台北市政府東門(松智路)" NumberOfRemainingBikes:15 Latitude:25.0408578889 Longitude:121.567904444];
+    station4 = [[Station alloc]initWithName:@"信義區 / 市民廣場" Address:@"市府路/松壽路(西北側)" NumberOfRemainingBikes:8 Latitude:25.0408578889 Longitude:121.567904444];
+    station5 = [[Station alloc]initWithName:@"信義區 / 興雅國中" Address:@"松仁路/松仁路95巷(東南側)" NumberOfRemainingBikes:9 Latitude:25.0408578889 Longitude:121.567904444];
+    
+    stations = [[NSArray alloc]initWithObjects:station1, station2, station3, station4, station5, nil];
+    
     self.title = @"YouBike";
     
     _tableView.hidden = NO;
@@ -73,7 +88,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 5;
+    return stations.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

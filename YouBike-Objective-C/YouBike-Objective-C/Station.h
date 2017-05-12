@@ -12,10 +12,10 @@
 
 @property NSString *name;
 @property NSString *address;
-@property NSInteger *numberOfRemainingBikes;
-@property NSNumber *latitude;
-@property NSNumber *longitude;
+@property int numberOfRemainingBikes;
+@property double latitude;
+@property double longitude;
 
-- (id)initWithName:(NSString*)name andAddress:(NSString*)address;
+- (id)initWithName:(NSString*)name Address:(NSString*)address NumberOfRemainingBikes:(int)numberOfRemainingBikes Latitude:(double)latitude Longitude:(double)longitude;
 
 @end

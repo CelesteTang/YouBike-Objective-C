@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Station.h"
 
 @interface StationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -15,5 +16,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *listGridSegmentedControl;
+
+
 
 @end

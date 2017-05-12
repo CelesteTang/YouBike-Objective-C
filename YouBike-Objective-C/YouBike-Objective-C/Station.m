@@ -11,19 +11,19 @@
 
 @implementation Station
 
-- (id)initWithName:(NSString*)name andAddress:(NSString*)address
+- (id)initWithName:(NSString*)name Address:(NSString*)address NumberOfRemainingBikes:(int)numberOfRemainingBikes Latitude:(double)latitude Longitude:(double)longitude
 {
     self = [super init];
     if(self) {
         NSLog(@"_init: %@", self);
         self.address = address;
         self.name = name;
+        self.numberOfRemainingBikes = numberOfRemainingBikes;
+        self.latitude = latitude;
+        self.longitude = longitude;
     }
     return self;
 }
 
-- (void)test {
-    
-}
-
 @end
+

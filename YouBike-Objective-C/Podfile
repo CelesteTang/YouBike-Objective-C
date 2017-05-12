@@ -9,6 +9,7 @@ target 'YouBike-Objective-C' do
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
   pod 'UIScrollView-InfiniteScroll'
+  pod 'AFNetworking', '~> 3.0'
 
   # Pods for YouBike-Objective-C
 

@@ -7,27 +7,110 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking.h>
-#import <UIKit/UIKit.h>
 #import "StationManager.h"
+#define endPointArray @"/sign-in/facebook", nil
+#define methodArray @"GET", @"POST", nil
 
-@implementation StationManager : NSObject
-
-
-- (void) getStations {
+@implementation StationManager {
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer.HTTPRequestHeaders ; // ["Authorization": "\(tokenType) \(token)" ] FB TOKEN
-    manager.requestSerializer.HTTPMethodsEncodingParametersInURI ; // parameters -> ["paging": self.nowPageToken] 取下一頁
+    NSString *baseURL;
+}
+
+typedef enum {
     
-    [manager GET:@"http://52.198.40.72/youbike/v1" parameters:@"" success:^(NSURLSessionDataTask *task, id responseObject) {
+    singin = 1
+    
+} EndPoint;
+
+typedef enum {
+    
+    get = 1,
+    post
+    
+} Method;
+
+-(instancetype) init {
+    
+    self = [super init];
+    
+    if (self) {
+        baseURL = @"http://52.198.40.72/youbike/v1";
+    }
+    
+    return self;
+}
+
+-(void) getStationsWithFacebookToken: (NSString *) token {
+    
+    EndPoint endPoint = singin;
+    
+    Method method = post;
+    
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:token,@"accessToken", nil];
+    
+    [self requestToServer:endPoint withMethod:method andDict:dict];
+}
+
+-(void) requestToServer:(EndPoint)endPoint withMethod:(Method) method andDict: (NSDictionary *) body {
+    
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
+    
+    NSString *endPointString = [self endPointEnumToString:endPoint];
+    NSURL *url = [NSURL URLWithString: [baseURL stringByAppendingString:endPointString]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    
+    if (url) {
         
-        NSLog(@"成功");
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSData *data = [NSJSONSerialization dataWithJSONObject:body options:0 error:nil];
         
-        NSLog(@"失敗");
-    }];
+        [request setURL:url];
+        [request setHTTPMethod: [self methodEnumToString:method]];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:data];
+        
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler: ^(NSData *data,NSURLResponse *response,NSError *error){
+            
+            NSLog(@"===================");
+            NSLog(@"%@", data);
+            NSLog(@"===================");
+            NSLog(@"%@", response);
+            NSLog(@"===================");
+            NSLog(@"%@", error);
+        }];
+        
+        [task resume];
+    }
+}
+
+-(NSString *) endPointEnumToString: (EndPoint) endPoint {
+    
+    NSArray *array = [[NSArray alloc] initWithObjects:endPointArray, nil];
+    
+    return [array objectAtIndex:(endPoint - 1)];
+}
+
+//TODO
+-(EndPoint) endPointStringToEnum: (NSString *) strVal {
+    
+    NSArray *array = [[NSArray alloc] initWithObjects:endPointArray, nil];
+    
+    NSUInteger n = [array indexOfObject:strVal];
+    
+    if (n == NSNotFound) {
+        
+        return 0;
+    }
+    
+    return (EndPoint) n;
+}
+
+-(NSString *) methodEnumToString: (Method) method {
+    
+    NSArray *array = [[NSArray alloc] initWithObjects:methodArray, nil];
+    
+    return [array objectAtIndex:(method - 1)];
 }
 
 @end
-

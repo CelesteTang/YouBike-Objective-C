@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1039496C1EC5B28900E21D61 /* StationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1039496B1EC5B28900E21D61 /* StationManager.m */; };
+		3C1B0E1D1EC98CD6004D0CA9 /* NetworkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C1B0E1C1EC98CD6004D0CA9 /* NetworkHandler.m */; };
 		43776B4B1EC1550B006ECDF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B4A1EC1550B006ECDF1 /* main.m */; };
 		43776B4E1EC1550B006ECDF1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 43776B4D1EC1550B006ECDF1 /* AppDelegate.m */; };
 		43776B541EC1550B006ECDF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43776B521EC1550B006ECDF1 /* Main.storyboard */; };
@@ -32,6 +33,8 @@
 /* Begin PBXFileReference section */
 		1039496B1EC5B28900E21D61 /* StationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationManager.m; sourceTree = "<group>"; };
 		1039496D1EC5B63800E21D61 /* StationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StationManager.h; sourceTree = "<group>"; };
+		3C1B0E1B1EC98CD6004D0CA9 /* NetworkHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkHandler.h; sourceTree = "<group>"; };
+		3C1B0E1C1EC98CD6004D0CA9 /* NetworkHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkHandler.m; sourceTree = "<group>"; };
 		43776B461EC1550B006ECDF1 /* YouBike-Objective-C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YouBike-Objective-C.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43776B4A1EC1550B006ECDF1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		43776B4C1EC1550B006ECDF1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +86,8 @@
 		1039493A1EC3208200E21D61 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3C1B0E1B1EC98CD6004D0CA9 /* NetworkHandler.h */,
+				3C1B0E1C1EC98CD6004D0CA9 /* NetworkHandler.m */,
 				1039496D1EC5B63800E21D61 /* StationManager.h */,
 				1039496B1EC5B28900E21D61 /* StationManager.m */,
 			);
@@ -307,6 +312,7 @@
 				43776B651EC19095006ECDF1 /* LogInViewController.m in Sources */,
 				43776B711EC1922C006ECDF1 /* ProfileViewController.m in Sources */,
 				43776B741EC1924A006ECDF1 /* MapViewController.m in Sources */,
+				3C1B0E1D1EC98CD6004D0CA9 /* NetworkHandler.m in Sources */,
 				43776B781EC192AB006ECDF1 /* StationTableViewCell.m in Sources */,
 				43776B821EC193F1006ECDF1 /* ProfileNavigationController.m in Sources */,
 				43776B681EC191BF006ECDF1 /* TabBarController.m in Sources */,

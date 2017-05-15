@@ -38,9 +38,18 @@
         login.loginBehavior = FBSDKLoginBehaviorBrowser;
         [login logInWithReadPermissions:@[@"public_profile",@"email"] fromViewController: self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
             
-            
-            printf("login");
-            
+            if(error) {
+                // process err
+            } else if (result.isCancelled){
+                //handle cancellation
+            } else {
+                if ([result.grantedPermissions containsObject:@"email"])
+                {
+                    NSLog(@"result is:%@",result);
+                    
+                    [login logOut]; // Only If you don't want to save the session for current app
+                }
+            }
             
         }];
         

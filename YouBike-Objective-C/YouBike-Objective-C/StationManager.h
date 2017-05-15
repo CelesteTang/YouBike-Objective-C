@@ -16,4 +16,5 @@
 @property (strong, nonatomic) NSString *token;
 @property (strong, nonatomic) NSString *tokenType;
 
+-(void) getStationsWithFacebookToken: (NSString *) token;
 @end

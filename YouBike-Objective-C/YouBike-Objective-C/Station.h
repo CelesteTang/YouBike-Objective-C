@@ -12,10 +12,12 @@
 
 @property NSString *name;
 @property NSString *address;
-@property int numberOfRemainingBikes;
-@property double latitude;
-@property double longitude;
+@property NSNumber *numberOfRemainingBikes;
+@property NSNumber *latitude;
+@property NSNumber *longitude;
 
-- (id)initWithName:(NSString*)name Address:(NSString*)address NumberOfRemainingBikes:(int)numberOfRemainingBikes Latitude:(double)latitude Longitude:(double)longitude;
+- (id)initWithName:(NSString*)name Address:(NSString*)address NumberOfRemainingBikes:(NSNumber*)numberOfRemainingBikes Latitude:(NSNumber*)latitude Longitude:(NSNumber*)longitude;
+
++(instancetype) getStationWithDictFromServer: (NSDictionary *) dict;
 
 @end

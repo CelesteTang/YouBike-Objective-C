@@ -10,7 +10,11 @@
 @implementation StationManager {
 
     NetworkHandler *networkHandler;
+    
+    NSMutableArray *stations;
 }
+
+@synthesize delegate;
 
 + (instancetype) sharedInstance
 {
@@ -29,6 +33,7 @@
     if (self) {
         networkHandler = [[NetworkHandler alloc] init];
         [networkHandler setDelegate:self];
+        stations = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -45,21 +50,41 @@
     NSDictionary *dataDict = JSON[@"data"];
     NSString *tokenType = dataDict[@"tokenType"];
     NSString *token = dataDict[@"token"];
-    NSLog(@"=====tokentype========");
-    NSLog(@"%@", tokenType);
-    
+
     [networkHandler getStationsWithToken:[[tokenType stringByAppendingString:@" "] stringByAppendingString:token]];
 }
 
 -(void) didGetDataFromServer: (NSData *) data {
-    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: nil];
     
-    NSLog(@"=================");
-    NSLog(@"%@", JSON);
+    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: nil];
+    NSArray *dataArray = JSON[@"data"];
+    
+    
+    for (int i = 0; i < dataArray.count; i++) {
+        
+        NSDictionary *dict = dataArray[i];
+        
+        Station* station = [Station getStationWithDictFromServer:dict];
+        
+        [stations addObject:station];
+    }
+    NSLog(@"%@", stations);
+    
+    [delegate didGetStationFromServer];
 }
 
 -(void) failToGetDataFromeServer {
     
+}
+
+-(NSInteger) numberOfRowsInSection: (NSInteger *) index {
+    
+    return stations.count;
+}
+
+-(Station *) getStationsWith: (NSInteger *) section andRow: (NSInteger) row {
+ 
+    return stations[row];
 }
 
 -(NSDictionary*) dataToJSON: (NSData*) data {
@@ -68,4 +93,5 @@
 
     return dataDict;
 }
+
 @end

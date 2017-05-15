@@ -28,6 +28,15 @@
     
     [manager getStationsWithFacebookToken:@"EAACEdEose0cBADy5CA2b37vTaa1iM0rpXzWuvPjR5EqP1P4xOmafTzpNs8x9EqTqncpY8ZA9ss0ZCmkFRZCVjv9QluiviEHqGw9bQ8fYYjQIAC4tLWD32Jv0Gku0vtQBxmuk72rJ7MUe8DwmVsZCM0YbOazUnVqPABKskMPmmbZByiZBoV1NZCMv6b3OBzQyFsZD"];
     
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]) {
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: [NSBundle mainBundle]];
+        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:
+                                @"TabBarController"];
+        _window.rootViewController = vc;
+        
+    }
+    
     return YES;
 }
 

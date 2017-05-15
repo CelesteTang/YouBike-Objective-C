@@ -27,7 +27,7 @@
     self.title = receivedStation.name;
 
     // Stationstop and Pin
-//    CLLocationCoordinate2D *stopLocation = [CLLocationCoordinate2DMake(receivedStation.latitude, receivedStation.longitude)];
+//    CLLocationCoordinate2D stopLocation = CLLocationCoordinate2DMake(receivedStation.latitude, receivedStation.longitude);
 //    [_mapView setRegion:MKCoordinateRegionMakeWithDistance(*stopLocation, 800, 800) animated:YES];
 //    MKAnnotationView *pin = [[MKAnnotationView alloc] init];
 //    [_mapView addAnnotation:pin];

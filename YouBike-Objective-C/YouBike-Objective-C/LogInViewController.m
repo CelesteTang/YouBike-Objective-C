@@ -38,6 +38,7 @@
         login.loginBehavior = FBSDKLoginBehaviorBrowser;
         [login logInWithReadPermissions:@[@"public_profile",@"email"] fromViewController: self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
             
+            
             printf("login");
             
             

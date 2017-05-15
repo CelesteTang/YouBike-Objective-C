@@ -24,9 +24,9 @@
                              didFinishLaunchingWithOptions:launchOptions];
     
     
-    StationManager* manager = [[StationManager alloc] init];
+    StationManager* manager = [StationManager sharedInstance];
     
-    [manager getStationsWithFacebookToken:@"EAACEdEose0cBAPZCjrZAF9q9VBLYff05K0y5W9iokqGufMxFpOLsqoB9MrQi9wZCnDwlY52Dw7BStexzznfZCl7hTP9ZAL9xMQnS8OPgMe31u6QzPvnTWTbrzW9294KySHkL6JlnviEgPMRgj868bkJXx9aFq1ZBsr5nhygAgOk47uoeQFCx7pb5sjX44x75cZD"];
+    [manager getStationsWithFacebookToken:@"EAACEdEose0cBADy5CA2b37vTaa1iM0rpXzWuvPjR5EqP1P4xOmafTzpNs8x9EqTqncpY8ZA9ss0ZCmkFRZCVjv9QluiviEHqGw9bQ8fYYjQIAC4tLWD32Jv0Gku0vtQBxmuk72rJ7MUe8DwmVsZCM0YbOazUnVqPABKskMPmmbZByiZBoV1NZCMv6b3OBzQyFsZD"];
     
     return YES;
 }

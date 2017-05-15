@@ -103,11 +103,11 @@
     
     cell.markerImageView.image = [UIImage imageNamed:@"iconMarker"];
     
-//    NSInteger *row = indexPath.row;
+    Station *station = self->stations[indexPath.row];
 
-    cell.nameLabel.text = @"";
-    cell.addressLabel.text = @"";
-    cell.numberLabel.text = @"";
+    cell.nameLabel.text = station.name;
+    cell.addressLabel.text = station.address;
+    cell.numberLabel.text = [NSString stringWithFormat:@"%d",station.numberOfRemainingBikes];
 
     cell.viewMapButton.layer.cornerRadius = 4;
     cell.viewMapButton.layer.borderWidth = 1;
@@ -155,10 +155,10 @@
 
     StationCollectionViewCell *cell = (StationCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"StationCollectionViewCell" forIndexPath:indexPath];
     
-//    NSInteger *item = indexPath.item;
+    Station *station = self->stations[indexPath.item];
     
-    cell.nameLabel.text = @"";
-    cell.numberLabel.text = @"";
+    cell.nameLabel.text = station.name;
+    cell.numberLabel.text = [NSString stringWithFormat:@"%d",station.numberOfRemainingBikes];
     
     return cell;
 }

@@ -9,7 +9,11 @@
 #import "MapViewController.h"
 #import "StationTableViewCell.h"
 
-@interface MapViewController ()
+@interface MapViewController () {
+
+    NSArray *receivedStations;
+
+}
 
 @end
 
@@ -18,11 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    self.title = receivedStations[0].name;
+    Station *receivedStation = receivedStations[0];
+    
+    self.title = receivedStation.name;
 
     // Stationstop and Pin
-//    CLLocationCoordinate2D *stopLocation = [CLLocationCoordinate2DMake(receivedStations[0].latitude, receivedStations[0].longitude)];
-//    [_mapView setRegion:MKCoordinateRegionMakeWithDistance(stopLocation, 800, 800) animated:YES];
+//    CLLocationCoordinate2D *stopLocation = [CLLocationCoordinate2DMake(receivedStation.latitude, receivedStation.longitude)];
+//    [_mapView setRegion:MKCoordinateRegionMakeWithDistance(*stopLocation, 800, 800) animated:YES];
 //    MKAnnotationView *pin = [[MKAnnotationView alloc] init];
 //    [_mapView addAnnotation:pin];
     
@@ -65,6 +71,10 @@
     _tableView.dataSource = self;
     UINib *nibOfTable = [UINib nibWithNibName:@"StationTableViewCell" bundle:nil];
     [_tableView registerNib:nibOfTable forCellReuseIdentifier:@"StationTableViewCell"];
+//    UINib *nibOfMap = [UINib nibWithNibName:@"MapTableViewCell" bundle:nil];
+//    [_tableView registerNib:nibOfMap forCellReuseIdentifier:@"MapTableViewCell"];
+//    UINib *nibOfComment = [UINib nibWithNibName:@"CommentTableViewCell" bundle:nil];
+//    [_tableView registerNib:nibOfComment forCellReuseIdentifier:@"CommentTableViewCell"];
     
     [_mapSegmentedControl addTarget:self action:@selector(mapStyleSwitch:) forControlEvents:UIControlEventTouchUpInside];
 }

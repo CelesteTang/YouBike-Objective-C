@@ -68,10 +68,8 @@
         NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler: ^(NSData *data,NSURLResponse *response,NSError *error){
             
             if (error != nil) {
-                
                 NSLog(@"============error=============");
                 NSLog(@"%@", error);
-                
                 return;
             }
 

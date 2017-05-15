@@ -11,7 +11,7 @@
 
 @implementation Station
 
-- (id)initWithName:(NSString*)name Address:(NSString*)address NumberOfRemainingBikes:(NSNumber*)numberOfRemainingBikes Latitude:(NSNumber*)latitude Longitude:(NSNumber*)longitude
+- (id)initWithName:(NSString*)name Address:(NSString*)address NumberOfRemainingBikes:(NSString*)numberOfRemainingBikes Latitude:(NSNumber*)latitude Longitude:(NSNumber*)longitude
 {
     self = [super init];
     if(self) {
@@ -30,7 +30,7 @@
     
     NSString *name = dict[@"sna"];
     NSString *address = dict[@"ar"];
-    NSNumber* numberOfRemainingBikes = dict[@"bemp"];
+    NSString* numberOfRemainingBikes = dict[@"bemp"];
     NSNumber* latitude = dict[@"lat"];
     NSNumber* longitude = dict[@"lng"];
     

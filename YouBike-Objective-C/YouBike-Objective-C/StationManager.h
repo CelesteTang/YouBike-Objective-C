@@ -23,11 +23,15 @@
 @property (strong, nonatomic) NSString *tokenType;
 @property (weak, atomic) id <StationManagerDelegate> delegate;
 
+//Singleton
 +(instancetype) sharedInstance;
+
 -(void) getStationsWithFacebookToken: (NSString *) token;
 -(void) didGetDataFromServer: (NSData *) data;
 -(void) failToGetDataFromeServer;
 -(void) didGetServerAccessToken: (NSData *) data;
+
+//Use for ViewController data source
 -(NSInteger) numberOfRowsInSection: (NSInteger *) index;
 -(Station *) getStationsWith: (NSInteger *) section andRow: (NSInteger) row;
 

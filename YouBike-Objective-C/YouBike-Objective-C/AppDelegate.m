@@ -24,9 +24,9 @@
                              didFinishLaunchingWithOptions:launchOptions];
     
     
-    StationManager* manager = [StationManager sharedInstance];
-    
-    [manager getStationsWithFacebookToken:@"EAACEdEose0cBADy5CA2b37vTaa1iM0rpXzWuvPjR5EqP1P4xOmafTzpNs8x9EqTqncpY8ZA9ss0ZCmkFRZCVjv9QluiviEHqGw9bQ8fYYjQIAC4tLWD32Jv0Gku0vtQBxmuk72rJ7MUe8DwmVsZCM0YbOazUnVqPABKskMPmmbZByiZBoV1NZCMv6b3OBzQyFsZD"];
+//    StationManager* manager = [StationManager sharedInstance];
+//    
+//    [manager getStationsWithFacebookToken:@"EAACEdEose0cBAKoU3oKvLRlN1ARfIqxWvZCNkhwnAP5c2jXWwhcDnah3A3R99JB0vZBXfMT82qEpG5nzyty1mRv3UNRNrBtbwoyVGyLSXLVHMdg3MBPzCzRxBSSlliPN4XYNfXZBkJ6pJbSzmX3a98dDgqh5DLfzZAHDJWPh4SL4BNgrMjCmhL1zyZBN8lycZD"];
     
     if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]) {
         

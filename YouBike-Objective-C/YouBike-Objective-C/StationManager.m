@@ -32,7 +32,7 @@
     
     if (self) {
         networkHandler = [[NetworkHandler alloc] init];
-        [networkHandler setDelegate:self];
+        networkHandler.delegate = self;
         stations = [[NSMutableArray alloc] init];
     }
     
@@ -41,7 +41,10 @@
 
 -(void) getStationsWithFacebookToken: (NSString *) token{
 
-    [networkHandler getServerAccessTokenWith: token];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void){
+    
+        [networkHandler getServerAccessTokenWith: token];
+    });
 }
 
 -(void) didGetServerAccessToken: (NSData *) data {
@@ -63,14 +66,14 @@
     for (int i = 0; i < dataArray.count; i++) {
         
         NSDictionary *dict = dataArray[i];
-        
         Station* station = [Station getStationWithDictFromServer:dict];
-        
         [stations addObject:station];
     }
-    NSLog(@"%@", stations);
     
-    [delegate didGetStationFromServer];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        
+        [delegate didGetStationFromServer];
+    });
 }
 
 -(void) failToGetDataFromeServer {

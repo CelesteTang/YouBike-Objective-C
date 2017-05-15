@@ -11,19 +11,21 @@
 #import "StationTableViewCell.h"
 #import "StationCollectionViewCell.h"
 
-@interface StationViewController () {
-
-    Station *station1;
-    Station *station2;
-    Station *station3;
-    Station *station4;
-    Station *station5;
-    NSArray *stations;
-}
+@interface StationViewController ()
 
 @end
 
 @implementation StationViewController
+
+@synthesize tableView;
+@synthesize collectionView;
+@synthesize listGridSegmentedControl;
+@synthesize station1;
+@synthesize station2;
+@synthesize station3;
+@synthesize station4;
+@synthesize station5;
+@synthesize stations;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,25 +40,25 @@
     
     self.title = @"YouBike";
     
-    _tableView.hidden = NO;
-    _collectionView.hidden = YES;
+    tableView.hidden = NO;
+    collectionView.hidden = YES;
     
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
+    tableView.delegate = self;
+    tableView.dataSource = self;
     UINib *nibOfTable = [UINib nibWithNibName:@"StationTableViewCell" bundle:nil];
-    [_tableView registerNib:nibOfTable forCellReuseIdentifier:@"StationTableViewCell"];
+    [tableView registerNib:nibOfTable forCellReuseIdentifier:@"StationTableViewCell"];
     
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
     UINib *nibOfCollection = [UINib nibWithNibName:@"StationCollectionViewCell" bundle:nil];
-    [_collectionView registerNib:nibOfCollection forCellWithReuseIdentifier:@"StationCollectionViewCell"];
+    [collectionView registerNib:nibOfCollection forCellWithReuseIdentifier:@"StationCollectionViewCell"];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setSectionInset:UIEdgeInsetsMake(14, 14, 14, 14)];
     layout.minimumLineSpacing = 14;
     layout.itemSize = CGSizeMake(166, 166);
     
-    [_listGridSegmentedControl addTarget:self action:@selector(indexChanged:) forControlEvents:UIControlEventValueChanged];
+    [listGridSegmentedControl addTarget:self action:@selector(indexChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)indexChanged: (UISegmentedControl *) sender {
@@ -64,13 +66,13 @@
     switch (sender.selectedSegmentIndex) {
             
         case 0:
-            _tableView.hidden = NO;
-            _collectionView.hidden = YES;
+            tableView.hidden = NO;
+            collectionView.hidden = YES;
             break;
             
         case 1:
-            _tableView.hidden = YES;
-            _collectionView.hidden = NO;
+            tableView.hidden = YES;
+            collectionView.hidden = NO;
             break;
             
         default:
@@ -122,7 +124,7 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
     
-//    mapViewController.receivedStations = [stations[indexPath.row]]
+//    mapViewController.receivedStations = [stations[indexPath.row]];
     
     [self.navigationController pushViewController:mapViewController animated:YES];
     
@@ -131,9 +133,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    MapViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
     
-//    mapViewController.receivedStations = [stations[indexPath.row]]
+//    mapViewController.receivedStations = stations[indexPath.row];
     
     [self.navigationController pushViewController:mapViewController animated:YES];
     
@@ -166,9 +168,9 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    MapViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
     
-//    mapViewController.receivedStations = [stations[indexPath.row]]
+//    mapViewController.receivedStations = stations[indexPath.item];
     
     [self.navigationController pushViewController:mapViewController animated:YES];
 

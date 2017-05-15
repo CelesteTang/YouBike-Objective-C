@@ -18,4 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapSegmentedControl;
 
+@property NSArray * receivedStations;
+
 @end

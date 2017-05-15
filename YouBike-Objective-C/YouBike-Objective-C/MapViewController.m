@@ -8,16 +8,18 @@
 
 #import "MapViewController.h"
 #import "StationTableViewCell.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface MapViewController () {
-
-    NSArray *receivedStations;
-
-}
+@interface MapViewController ()
 
 @end
 
 @implementation MapViewController
+
+@synthesize tableView;
+@synthesize mapView;
+@synthesize mapSegmentedControl;
+@synthesize receivedStations;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,10 +29,10 @@
     self.title = receivedStation.name;
 
     // Stationstop and Pin
-//    CLLocationCoordinate2D stopLocation = CLLocationCoordinate2DMake(receivedStation.latitude, receivedStation.longitude);
-//    [_mapView setRegion:MKCoordinateRegionMakeWithDistance(*stopLocation, 800, 800) animated:YES];
-//    MKAnnotationView *pin = [[MKAnnotationView alloc] init];
-//    [_mapView addAnnotation:pin];
+    CLLocationCoordinate2D stopLocation = CLLocationCoordinate2DMake(receivedStation.latitude, receivedStation.longitude);
+    [mapView setRegion:MKCoordinateRegionMakeWithDistance(stopLocation, 800, 800) animated:YES];
+    MKAnnotationView *pin = [[MKAnnotationView alloc] init];
+    [mapView addAnnotation:pin];
     
     // Current Location
     CLLocationManager *locationManager = [[CLLocationManager alloc] init];
@@ -40,12 +42,12 @@
     [locationManager requestWhenInUseAuthorization];
     [locationManager startUpdatingLocation];
     
-    _mapView.showsUserLocation = YES;
-    _mapView.zoomEnabled = YES;
+    mapView.showsUserLocation = YES;
+    mapView.zoomEnabled = YES;
     
     // Route
     
-    _mapView.delegate = self;
+    mapView.delegate = self;
     MKDirectionsRequest *directionRequest = [[MKDirectionsRequest alloc] init];
     MKPlacemark *source = [[MKPlacemark alloc]initWithCoordinate:locationManager.location.coordinate];
     directionRequest.source = [[MKMapItem alloc] initWithPlacemark:source];
@@ -62,21 +64,21 @@
         
         for (MKRoute *route in response.routes) {
         
-            [_mapView addOverlay:route.polyline];
-            [_mapView setVisibleMapRect:route.polyline.boundingMapRect animated:YES];
+            [mapView addOverlay:route.polyline];
+            [mapView setVisibleMapRect:route.polyline.boundingMapRect animated:YES];
         };
     }];
     
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
+    tableView.delegate = self;
+    tableView.dataSource = self;
     UINib *nibOfTable = [UINib nibWithNibName:@"StationTableViewCell" bundle:nil];
-    [_tableView registerNib:nibOfTable forCellReuseIdentifier:@"StationTableViewCell"];
+    [tableView registerNib:nibOfTable forCellReuseIdentifier:@"StationTableViewCell"];
 //    UINib *nibOfMap = [UINib nibWithNibName:@"MapTableViewCell" bundle:nil];
 //    [_tableView registerNib:nibOfMap forCellReuseIdentifier:@"MapTableViewCell"];
 //    UINib *nibOfComment = [UINib nibWithNibName:@"CommentTableViewCell" bundle:nil];
 //    [_tableView registerNib:nibOfComment forCellReuseIdentifier:@"CommentTableViewCell"];
     
-    [_mapSegmentedControl addTarget:self action:@selector(mapStyleSwitch:) forControlEvents:UIControlEventTouchUpInside];
+    [mapSegmentedControl addTarget:self action:@selector(mapStyleSwitch:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -99,15 +101,15 @@
     switch (sender.selectedSegmentIndex) {
             
         case 0:
-            _mapView.mapType = MKMapTypeStandard;
+            mapView.mapType = MKMapTypeStandard;
             break;
             
         case 1:
-            _mapView.mapType = MKMapTypeSatellite;
+            mapView.mapType = MKMapTypeSatellite;
             break;
             
         case 2:
-            _mapView.mapType = MKMapTypeHybrid;
+            mapView.mapType = MKMapTypeHybrid;
             break;
             
         default: break;

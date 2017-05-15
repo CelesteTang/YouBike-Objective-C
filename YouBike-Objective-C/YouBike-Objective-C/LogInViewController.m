@@ -9,6 +9,7 @@
 #import "LogInViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "StationManager.h"
 
 @interface LogInViewController ()
 
@@ -56,9 +57,23 @@
                          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                              if (!error) {
                                  NSLog(@"fetched user:%@", result);
+                                 [[NSUserDefaults standardUserDefaults] setObject:[result valueForKeyPath:@"name"] forKey:@"name"];
+                                 [[NSUserDefaults standardUserDefaults] setObject:[result valueForKeyPath:@"email"] forKey:@"email"];
+                                 [[NSUserDefaults standardUserDefaults] setObject:[result valueForKeyPath:@"picture"] forKey:@"picture"];
+                                 [[NSUserDefaults standardUserDefaults] setObject:[[FBSDKAccessToken currentAccessToken]tokenString] forKey:@"token"];
                                  
+                                 //access token
+                                 StationManager* manager = [[StationManager alloc] init];
+                                 [manager getStationsWithFacebookToken: [[FBSDKAccessToken currentAccessToken]tokenString]];
                                  
-//                                 [self registerWithFacebook:result];
+                                 //instantiate viewcontroller
+                                 UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: [NSBundle mainBundle]];
+                                 UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:
+                                                         @"TabBarController"];
+                                 [self presentViewController:vc animated:true completion:^{
+                                     
+                                 }];
+                                 
                              }else{
                                  NSLog(@"%@",error);
                              }

@@ -30,31 +30,49 @@
 
 - (void)logIn {
 
-    if ([FBSDKAccessToken currentAccessToken]) {
-        printf("suc");
-    } else {
-        
+//    if ([FBSDKAccessToken currentAccessToken]) {
+//        printf("suc");
+//    } else {
+//        
         FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
         login.loginBehavior = FBSDKLoginBehaviorBrowser;
         [login logInWithReadPermissions:@[@"public_profile",@"email"] fromViewController: self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
             
-            if(error) {
-                // process err
-            } else if (result.isCancelled){
-                //handle cancellation
-            } else {
+            if (error)
+            {
+                // Process error
+            }
+            else if (result.isCancelled)
+            {
+                // Handle cancellations
+            }
+            else
+            {
                 if ([result.grantedPermissions containsObject:@"email"])
                 {
                     NSLog(@"result is:%@",result);
+                    if ([FBSDKAccessToken currentAccessToken]) {
+                        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id, email, name, picture.type(large), link"}]
+                         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                             if (!error) {
+                                 NSLog(@"fetched user:%@", result);
+                                 
+                                 
+//                                 [self registerWithFacebook:result];
+                             }else{
+                                 NSLog(@"%@",error);
+                             }
+                         }];
+                    }
                     
-                    [login logOut]; // Only If you don't want to save the session for current app
+                    
                 }
             }
             
         }];
         
         
-    }
+//    }
     
 }
 

@@ -7,6 +7,8 @@
 //
 
 #import "LogInViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface LogInViewController ()
 
@@ -28,6 +30,22 @@
 
 - (void)logIn {
 
+    if ([FBSDKAccessToken currentAccessToken]) {
+        printf("suc");
+    } else {
+        
+        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+        login.loginBehavior = FBSDKLoginBehaviorBrowser;
+        [login logInWithReadPermissions:@[@"public_profile",@"email"] fromViewController: self handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+            
+            printf("login");
+            
+            
+        }];
+        
+        
+    }
+    
 }
 
 @end

@@ -72,12 +72,30 @@ typedef enum {
         
         NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler: ^(NSData *data,NSURLResponse *response,NSError *error){
             
-            NSLog(@"===================");
-            NSLog(@"%@", data);
-            NSLog(@"===================");
-            NSLog(@"%@", response);
-            NSLog(@"===================");
-            NSLog(@"%@", error);
+            if (error != nil) {
+                
+                NSLog(@"============error=============");
+                NSLog(@"%@", error);
+                
+                return;
+            }
+            
+            NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: nil];
+            NSLog(@"=========dataDict===========");
+            NSLog(@"%@", dataDict);
+            
+            NSDictionary *content = dataDict[@"data"];
+            NSLog(@"==========content==========");
+            NSLog(@"%@", content);
+            
+            NSString *tokenType = content[@"tokenType"];
+            NSLog(@"===========tokenType=========");
+            NSLog(@"%@", tokenType);
+            
+            NSString *token = content[@"token"];
+            NSLog(@"==========token==========");
+            NSLog(@"%@", token);
+            
         }];
         
         [task resume];

@@ -80,12 +80,12 @@
     
 }
 
--(NSInteger) numberOfRowsInSection: (NSInteger *) index {
+-(NSInteger) numberOfRowsInSection: (NSInteger) index {
     
     return stations.count;
 }
 
--(Station *) getStationsWith: (NSInteger *) section andRow: (NSInteger) row {
+-(Station *) getStationsWith: (NSInteger) section andRow: (NSInteger) row {
  
     return stations[row];
 }

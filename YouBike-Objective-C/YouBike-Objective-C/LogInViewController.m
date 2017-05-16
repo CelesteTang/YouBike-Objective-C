@@ -10,6 +10,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "StationManager.h"
+#import "TabBarController.h"
+#import "StationViewController.h"
 
 @interface LogInViewController ()
 
@@ -63,13 +65,21 @@
                                  [[NSUserDefaults standardUserDefaults] setObject:[[FBSDKAccessToken currentAccessToken]tokenString] forKey:@"token"];
                                  
                                  //access token
-                                 StationManager* manager = [[StationManager alloc] init];
-                                 [manager getStationsWithFacebookToken: [[FBSDKAccessToken currentAccessToken]tokenString]];
+                                 
                                  
                                  //instantiate viewcontroller
                                  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: [NSBundle mainBundle]];
-                                 UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:
+                                 TabBarController *vc = [storyboard instantiateViewControllerWithIdentifier:
                                                          @"TabBarController"];
+                                 
+                                 StationViewController* mainVC = [vc viewControllers][0];
+                                 
+                                 mainVC.datamodel = [StationManager sharedInstance];
+                                 
+                                 [StationManager sharedInstance].delegate = mainVC;
+                                 
+                                 [[StationManager sharedInstance] getStationsWithFacebookToken: [[FBSDKAccessToken currentAccessToken]tokenString]];
+                                 
                                  [self presentViewController:vc animated:true completion:^{
                                      
                                  }];

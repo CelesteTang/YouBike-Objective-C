@@ -32,7 +32,7 @@
 -(void) didGetServerAccessToken: (NSData *) data;
 
 //Use for ViewController data source
--(NSInteger) numberOfRowsInSection: (NSInteger *) index;
--(Station *) getStationsWith: (NSInteger *) section andRow: (NSInteger) row;
+-(NSInteger) numberOfRowsInSection: (NSInteger) index;
+-(Station *) getStationsWith: (NSInteger) section andRow: (NSInteger) row;
 
 @end

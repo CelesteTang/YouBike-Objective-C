@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StationManager.h"
 #import "Station.h"
 #import "MapViewController.h"
 
-@interface StationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface StationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, StationManagerDelegate> {
+    
+    
+}
+
+@property (strong, atomic, readwrite) StationManager *datamodel;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -24,5 +30,7 @@
 @property Station *station4;
 @property Station *station5;
 @property NSArray *stations;
+
+-(void) didGetStationFromServer;
 
 @end

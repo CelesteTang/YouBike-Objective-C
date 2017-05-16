@@ -10,13 +10,17 @@
 #import "StationViewController.h"
 #import "StationTableViewCell.h"
 #import "StationCollectionViewCell.h"
+#import "StationManager.h"
 
 @interface StationViewController ()
 
 @end
 
-@implementation StationViewController
+@implementation StationViewController {
+    
+}
 
+@synthesize datamodel;
 @synthesize tableView;
 @synthesize collectionView;
 @synthesize listGridSegmentedControl;
@@ -90,7 +94,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return stations.count;
+    return [datamodel numberOfRowsInSection:section];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -105,7 +109,9 @@
     
     cell.markerImageView.image = [UIImage imageNamed:@"iconMarker"];
     
-    Station *station = self->stations[indexPath.row];
+    Station *station = [datamodel getStationsWith:indexPath.section andRow:indexPath.row];
+    
+    //Station *station = self->stations[indexPath.row];
 
     cell.nameLabel.text = station.name;
     cell.addressLabel.text = station.address;
@@ -152,7 +158,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return 5;
+    return [datamodel numberOfRowsInSection:section];
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -178,6 +184,12 @@
     
     [self.navigationController pushViewController:mapViewController animated:YES];
 
+}
+
+-(void) didGetStationFromServer {
+    
+    [tableView reloadData];
+    [collectionView reloadData];
 }
 
 @end

@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mapSegmentedControl;
 
 @property Station * receivedStation;
+@property CLLocationManager *locationManager;
 
 @end

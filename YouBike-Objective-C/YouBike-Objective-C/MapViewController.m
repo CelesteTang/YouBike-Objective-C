@@ -20,6 +20,7 @@
 @synthesize mapView;
 @synthesize mapSegmentedControl;
 @synthesize receivedStation;
+@synthesize locationManager;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +39,7 @@
     [mapView addAnnotation:pin];
     
     // Current Location
-    CLLocationManager *locationManager = [[CLLocationManager alloc] init];
+    locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -54,8 +55,8 @@
     MKDirectionsRequest *directionRequest = [[MKDirectionsRequest alloc] init];
     MKPlacemark *source = [[MKPlacemark alloc]initWithCoordinate:locationManager.location.coordinate];
     directionRequest.source = [[MKMapItem alloc] initWithPlacemark:source];
-//    MKPlacemark *destination = [[MKPlacemark alloc]initWithCoordinate:stopLocation];
-//    directionRequest.destination = [[MKMapItem alloc]initWithPlacemark:destination];
+    MKPlacemark *destination = [[MKPlacemark alloc]initWithCoordinate:stopLocation];
+    directionRequest.destination = [[MKMapItem alloc]initWithPlacemark:destination];
     directionRequest.requestsAlternateRoutes = YES;
     directionRequest.transportType = MKDirectionsTransportTypeWalking;
 
@@ -82,7 +83,7 @@
 //    [_tableView registerNib:nibOfComment forCellReuseIdentifier:@"CommentTableViewCell"];
     tableView.allowsSelection = NO;
     
-    [mapSegmentedControl addTarget:self action:@selector(mapStyleSwitch:) forControlEvents:UIControlEventTouchUpInside];
+    [mapSegmentedControl addTarget:self action:@selector(mapStyleSwitch:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -95,13 +96,11 @@
     [super viewWillDisappear:animated];
     
     self.tabBarController.tabBar.hidden = NO;
-//    [locationManager stopUpdatingLocation];
+    [locationManager stopUpdatingLocation];
 }
 
 - (void)mapStyleSwitch: (UISegmentedControl *) sender {
-    
-    NSLog(@"%ld", (long)sender.selectedSegmentIndex);
-    
+
     switch (sender.selectedSegmentIndex) {
             
         case 0:

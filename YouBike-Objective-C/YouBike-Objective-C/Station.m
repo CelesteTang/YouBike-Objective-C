@@ -11,11 +11,10 @@
 
 @implementation Station
 
-- (id)initWithName:(NSString*)name Address:(NSString*)address NumberOfRemainingBikes:(int)numberOfRemainingBikes Latitude:(double)latitude Longitude:(double)longitude
+- (id)initWithName:(NSString*)name Address:(NSString*)address NumberOfRemainingBikes:(NSString*)numberOfRemainingBikes Latitude:(NSNumber*)latitude Longitude:(NSNumber*)longitude
 {
     self = [super init];
     if(self) {
-        NSLog(@"_init: %@", self);
         self.address = address;
         self.name = name;
         self.numberOfRemainingBikes = numberOfRemainingBikes;
@@ -23,6 +22,21 @@
         self.longitude = longitude;
     }
     return self;
+}
+
++(instancetype) getStationWithDictFromServer: (NSDictionary *) dict {
+    
+    Station *station = [Station alloc];
+    
+    NSString *name = dict[@"sna"];
+    NSString *address = dict[@"ar"];
+    NSString* numberOfRemainingBikes = dict[@"bemp"];
+    NSNumber* latitude = dict[@"lat"];
+    NSNumber* longitude = dict[@"lng"];
+    
+    station = [station initWithName:name Address:address NumberOfRemainingBikes:numberOfRemainingBikes Latitude:latitude Longitude:longitude];
+    
+    return station;
 }
 
 @end

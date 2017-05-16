@@ -29,7 +29,7 @@
     
     _userNameLabel.text = [NSUserDefaults.standardUserDefaults stringForKey:@"name"];
 
-    NSString *pictureURL = [NSUserDefaults.standardUserDefaults stringForKey:@"url"];
+    NSString *pictureURL = [NSUserDefaults.standardUserDefaults stringForKey:@"picture"];
     NSURL *url = [NSURL URLWithString:pictureURL];
     
     if (url == nil) { /* error handling */ }

@@ -5,130 +5,96 @@
 //  Created by Chien on 2017/5/12.
 //  Copyright © 2017年 Hsin-Yu Tang. All rights reserved.
 //
-
-#import <Foundation/Foundation.h>
 #import "StationManager.h"
-#define endPointArray @"/sign-in/facebook", nil
-#define methodArray @"GET", @"POST", nil
 
 @implementation StationManager {
+
+    NetworkHandler *networkHandler;
     
-    NSString *baseURL;
+    NSMutableArray *stations;
 }
 
-typedef enum {
-    
-    singin = 1
-    
-} EndPoint;
+@synthesize delegate;
 
-typedef enum {
-    
-    get = 1,
-    post
-    
-} Method;
++ (instancetype) sharedInstance
+{
+    static StationManager *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[StationManager alloc] init];
+    });
+    return instance;
+}
 
 -(instancetype) init {
     
     self = [super init];
     
     if (self) {
-        baseURL = @"http://52.198.40.72/youbike/v1";
+        networkHandler = [[NetworkHandler alloc] init];
+        networkHandler.delegate = self;
+        stations = [[NSMutableArray alloc] init];
     }
     
     return self;
 }
 
--(void) getStationsWithFacebookToken: (NSString *) token {
+-(void) getStationsWithFacebookToken: (NSString *) token{
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void){
     
-    EndPoint endPoint = singin;
-    
-    Method method = post;
-    
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:token,@"accessToken", nil];
-    
-    [self requestToServer:endPoint withMethod:method andDict:dict];
+        [networkHandler getServerAccessTokenWith: token];
+    });
 }
 
--(void) requestToServer:(EndPoint)endPoint withMethod:(Method) method andDict: (NSDictionary *) body {
+-(void) didGetServerAccessToken: (NSData *) data {
     
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
-    
-    NSString *endPointString = [self endPointEnumToString:endPoint];
-    NSURL *url = [NSURL URLWithString: [baseURL stringByAppendingString:endPointString]];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    
-    if (url) {
-        
-        NSData *data = [NSJSONSerialization dataWithJSONObject:body options:0 error:nil];
-        
-        [request setURL:url];
-        [request setHTTPMethod: [self methodEnumToString:method]];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [request setHTTPBody:data];
-        
-        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler: ^(NSData *data,NSURLResponse *response,NSError *error){
-            
-            if (error != nil) {
-                
-                NSLog(@"============error=============");
-                NSLog(@"%@", error);
-                
-                return;
-            }
-            
-            NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: nil];
-            NSLog(@"=========dataDict===========");
-            NSLog(@"%@", dataDict);
-            
-            NSDictionary *content = dataDict[@"data"];
-            NSLog(@"==========content==========");
-            NSLog(@"%@", content);
-            
-            NSString *tokenType = content[@"tokenType"];
-            NSLog(@"===========tokenType=========");
-            NSLog(@"%@", tokenType);
-            
-            NSString *token = content[@"token"];
-            NSLog(@"==========token==========");
-            NSLog(@"%@", token);
-            
-        }];
-        
-        [task resume];
-    }
+    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: nil];
+    NSDictionary *dataDict = JSON[@"data"];
+    NSString *tokenType = dataDict[@"tokenType"];
+    NSString *token = dataDict[@"token"];
+
+    [networkHandler getStationsWithToken:[[tokenType stringByAppendingString:@" "] stringByAppendingString:token]];
 }
 
--(NSString *) endPointEnumToString: (EndPoint) endPoint {
+-(void) didGetDataFromServer: (NSData *) data {
     
-    NSArray *array = [[NSArray alloc] initWithObjects:endPointArray, nil];
+    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: nil];
+    NSArray *dataArray = JSON[@"data"];
     
-    return [array objectAtIndex:(endPoint - 1)];
-}
-
-//TODO
--(EndPoint) endPointStringToEnum: (NSString *) strVal {
     
-    NSArray *array = [[NSArray alloc] initWithObjects:endPointArray, nil];
-    
-    NSUInteger n = [array indexOfObject:strVal];
-    
-    if (n == NSNotFound) {
+    for (int i = 0; i < dataArray.count; i++) {
         
-        return 0;
+        NSDictionary *dict = dataArray[i];
+        Station* station = [Station getStationWithDictFromServer:dict];
+        [stations addObject:station];
     }
     
-    return (EndPoint) n;
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        
+        [delegate didGetStationFromServer];
+    });
 }
 
--(NSString *) methodEnumToString: (Method) method {
+-(void) failToGetDataFromeServer {
     
-    NSArray *array = [[NSArray alloc] initWithObjects:methodArray, nil];
+}
+
+-(NSInteger) numberOfRowsInSection: (NSInteger *) index {
     
-    return [array objectAtIndex:(method - 1)];
+    return stations.count;
+}
+
+-(Station *) getStationsWith: (NSInteger *) section andRow: (NSInteger) row {
+ 
+    return stations[row];
+}
+
+-(NSDictionary*) dataToJSON: (NSData*) data {
+
+    NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: nil];
+
+    return dataDict;
 }
 
 @end

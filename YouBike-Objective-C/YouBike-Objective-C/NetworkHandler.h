@@ -7,7 +7,43 @@
 //
 
 #import <Foundation/Foundation.h>
+#define endPointArray @"/sign-in/facebook",@"/stations", nil
+#define methodArray @"GET", @"POST", nil
+#define headerArray @"Authorization", @"Content-Type", nil
+
+@protocol NetWorkHandlerDelegate
+-(void) didGetServerAccessToken: (NSData *) data;
+-(void) didGetDataFromServer: (NSData *) data;
+-(void) failToGetDataFromeServer;
+@end
 
 @interface NetworkHandler : NSObject
 
+@property(weak, atomic, readwrite) id <NetWorkHandlerDelegate> delegate;
+
+typedef enum {
+    
+    signin = 1,
+    stations
+    
+} EndPoint;
+
+typedef enum {
+    
+    get = 1,
+    post
+    
+} Method;
+
+typedef enum {
+    
+    Authorization = 1,
+    ContentType
+    
+} Header;
+
+-(void) getServerAccessTokenWith: (NSString *) token;
+-(void) getStationsWithToken: (NSString *) token;
+
 @end
+

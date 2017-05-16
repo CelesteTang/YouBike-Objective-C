@@ -100,6 +100,8 @@
 				3C1B0E1C1EC98CD6004D0CA9 /* NetworkHandler.m */,
 				1039496D1EC5B63800E21D61 /* StationManager.h */,
 				1039496B1EC5B28900E21D61 /* StationManager.m */,
+				43776B861EC1C6ED006ECDF1 /* Station.h */,
+				43BCAD961EC5C47B00AC56F6 /* Station.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -149,8 +151,6 @@
 				43776B701EC1922C006ECDF1 /* ProfileViewController.m */,
 				43776B721EC1924A006ECDF1 /* MapViewController.h */,
 				43776B731EC1924A006ECDF1 /* MapViewController.m */,
-				43776B861EC1C6ED006ECDF1 /* Station.h */,
-				43BCAD961EC5C47B00AC56F6 /* Station.m */,
 				436DE9C71EC98F8A00CCAEDB /* MapTableViewCell.h */,
 				436DE9C81EC98F8A00CCAEDB /* MapTableViewCell.m */,
 				436DE9C91EC98F8A00CCAEDB /* MapTableViewCell.xib */,

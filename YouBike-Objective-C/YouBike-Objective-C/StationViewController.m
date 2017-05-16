@@ -109,7 +109,7 @@
 
     cell.nameLabel.text = station.name;
     cell.addressLabel.text = station.address;
-    cell.numberLabel.text = [NSString stringWithFormat:@"%d",station.numberOfRemainingBikes];
+    cell.numberLabel.text = station.numberOfRemainingBikes;
 
     cell.viewMapButton.layer.cornerRadius = 4;
     cell.viewMapButton.layer.borderWidth = 1;
@@ -135,8 +135,14 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MapViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
     
-//    mapViewController.receivedStations = stations[indexPath.row];
+    Station *station = self->stations[indexPath.row];
     
+    mapViewController.receivedStation = station;
+    
+    NSLog(@"--------------------");
+    NSLog(@"%@", station.name);
+    NSLog(@"--------------------");
+
     [self.navigationController pushViewController:mapViewController animated:YES];
     
 }
@@ -160,7 +166,7 @@
     Station *station = self->stations[indexPath.item];
     
     cell.nameLabel.text = station.name;
-    cell.numberLabel.text = [NSString stringWithFormat:@"%d",station.numberOfRemainingBikes];
+    cell.numberLabel.text = station.numberOfRemainingBikes;
     
     return cell;
 }
@@ -170,7 +176,9 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MapViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
     
-//    mapViewController.receivedStations = stations[indexPath.item];
+    Station *station = self->stations[indexPath.item];
+    
+    mapViewController.receivedStation = station;
     
     [self.navigationController pushViewController:mapViewController animated:YES];
 

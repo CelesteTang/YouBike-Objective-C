@@ -19,17 +19,17 @@
 @synthesize tableView;
 @synthesize mapView;
 @synthesize mapSegmentedControl;
-@synthesize receivedStations;
+@synthesize receivedStation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    Station *receivedStation = receivedStations[0];
     
     self.title = receivedStation.name;
 
     // Stationstop and Pin
-    CLLocationCoordinate2D stopLocation = CLLocationCoordinate2DMake(receivedStation.latitude, receivedStation.longitude);
+    long double latitude = [receivedStation.latitude doubleValue];
+    long double longitude = [receivedStation.longitude doubleValue];
+    CLLocationCoordinate2D stopLocation = CLLocationCoordinate2DMake(latitude, longitude);
     [mapView setRegion:MKCoordinateRegionMakeWithDistance(stopLocation, 800, 800) animated:YES];
     MKAnnotationView *pin = [[MKAnnotationView alloc] init];
     [mapView addAnnotation:pin];
@@ -77,6 +77,7 @@
 //    [_tableView registerNib:nibOfMap forCellReuseIdentifier:@"MapTableViewCell"];
 //    UINib *nibOfComment = [UINib nibWithNibName:@"CommentTableViewCell" bundle:nil];
 //    [_tableView registerNib:nibOfComment forCellReuseIdentifier:@"CommentTableViewCell"];
+    tableView.allowsSelection = NO;
     
     [mapSegmentedControl addTarget:self action:@selector(mapStyleSwitch:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -139,12 +140,11 @@
     StationTableViewCell *cell = (StationTableViewCell *) [tableView dequeueReusableCellWithIdentifier:@"StationTableViewCell" forIndexPath:indexPath];
     
     cell.markerImageView.image = [UIImage imageNamed:@"iconMarker"];
-    
-    //    NSInteger *row = indexPath.row;
-    
-    cell.nameLabel.text = @"";
-    cell.addressLabel.text = @"";
-    cell.numberLabel.text = @"";
+        
+    cell.nameLabel.text = receivedStation.name;
+    cell.addressLabel.text = receivedStation.address;
+    cell.numberLabel.text = receivedStation.numberOfRemainingBikes;
+
     cell.viewMapButton.hidden = YES;
     
     return cell;

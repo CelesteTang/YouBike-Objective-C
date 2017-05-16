@@ -31,7 +31,10 @@
     long double longitude = [receivedStation.longitude doubleValue];
     CLLocationCoordinate2D stopLocation = CLLocationCoordinate2DMake(latitude, longitude);
     [mapView setRegion:MKCoordinateRegionMakeWithDistance(stopLocation, 800, 800) animated:YES];
-    MKAnnotationView *pin = [[MKAnnotationView alloc] init];
+    MKPointAnnotation *pin = [[MKPointAnnotation alloc] init];
+    pin.title = receivedStation.name;
+    pin.subtitle = receivedStation.address;
+    pin.coordinate = stopLocation;
     [mapView addAnnotation:pin];
     
     // Current Location

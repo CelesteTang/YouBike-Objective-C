@@ -138,14 +138,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MapViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
-    
-    Station *station = self->stations[indexPath.row];
-    
-    mapViewController.receivedStation = station;
-
-    [self.navigationController pushViewController:mapViewController animated:YES];
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    MapViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
+//    
+//    Station *station = self->stations[indexPath.row];
+//    
+//    mapViewController.receivedStation = station;
+//
+//    [self.navigationController pushViewController:mapViewController animated:YES];
     
 }
 
@@ -165,7 +165,7 @@
 
     StationCollectionViewCell *cell = (StationCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"StationCollectionViewCell" forIndexPath:indexPath];
     
-    Station *station = self->stations[indexPath.item];
+    Station *station = [datamodel getStationsWith:indexPath.section andRow:indexPath.row];
     
     cell.nameLabel.text = station.name;
     cell.numberLabel.text = station.numberOfRemainingBikes;
@@ -175,19 +175,21 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MapViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
-    
-    Station *station = self->stations[indexPath.item];
-    
-    mapViewController.receivedStation = station;
-    
-    [self.navigationController pushViewController:mapViewController animated:YES];
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    MapViewController *mapViewController = [storyBoard instantiateViewControllerWithIdentifier:@"MapViewController"];
+//    
+//    Station *station = self->stations[indexPath.item];
+//    
+//    mapViewController.receivedStation = station;
+//    
+//    [self.navigationController pushViewController:mapViewController animated:YES];
 
 }
 
 -(void) didGetStationFromServer {
     
+    NSLog(@"=========================");
+    NSLog(@"Reload data");
     [tableView reloadData];
     [collectionView reloadData];
 }

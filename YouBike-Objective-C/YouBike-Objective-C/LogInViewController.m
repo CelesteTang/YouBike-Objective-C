@@ -12,6 +12,7 @@
 #import "StationManager.h"
 #import "TabBarController.h"
 #import "StationViewController.h"
+#import "StationNavigationController.h"
 
 @interface LogInViewController ()
 
@@ -70,11 +71,13 @@
                                  TabBarController *vc = [storyboard instantiateViewControllerWithIdentifier:
                                                          @"TabBarController"];
                                  
-                                 StationViewController* mainVC = [vc viewControllers][0];
+                                 StationNavigationController *mainVC = [vc viewControllers][0];
                                  
-                                 mainVC.datamodel = [StationManager sharedInstance];
+                                 StationViewController *stationVC = [mainVC viewControllers][0];
                                  
-                                 [StationManager sharedInstance].delegate = mainVC;
+                                 stationVC.datamodel = [StationManager sharedInstance];
+                                 
+                                 [StationManager sharedInstance].delegate = stationVC;
                                  
                                  [[StationManager sharedInstance] getStationsWithFacebookToken: [[FBSDKAccessToken currentAccessToken]tokenString]];
                                  

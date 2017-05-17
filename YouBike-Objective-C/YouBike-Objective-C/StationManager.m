@@ -82,7 +82,7 @@
 
 -(NSInteger) numberOfRowsInSection: (NSInteger) index {
     
-    NSLog(@"======numberOfRow %lu===========", (unsigned long)stations.count);
+    //NSLog(@"======numberOfRow %lu===========", (unsigned long)stations.count);
     
     return stations.count;
 }
@@ -91,11 +91,11 @@
  
     if (row >= stations.count) {
         
-        NSLog(@"========out of range count: %lu======row %lu=====", (unsigned long)stations.count, (unsigned long)row);
+        //NSLog(@"========out of range count: %lu======row %lu=====", (unsigned long)stations.count, (unsigned long)row);
         return stations[0];
     }
     
-    NSLog(@"========section %lu======row %lu=====", (unsigned long)section, (unsigned long)row);
+    //NSLog(@"========section %lu======row %lu=====", (unsigned long)section, (unsigned long)row);
     return stations[row];
 }
 

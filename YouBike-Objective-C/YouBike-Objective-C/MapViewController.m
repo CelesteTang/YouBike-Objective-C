@@ -155,7 +155,7 @@
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay {
 
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc]initWithPolyline:overlay];
-    renderer.strokeColor = [UIColor colorWithRed:201/255 green:28/255 blue:187/255 alpha:1];
+    renderer.strokeColor = [UIColor colorWithRed:201/255.0 green:28/255.0 blue:187/255.0 alpha:1.0];
     renderer.lineWidth = 10;
     
     return renderer;

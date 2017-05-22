@@ -23,6 +23,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [[UITabBar appearance] setTranslucent:NO];
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:251/255.0 green:197/255.0 blue:111/255.0 alpha:1.0]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:61/255.0 green:52/255.0 blue:66/255.0 alpha:1.0]];
+    
+    [[UINavigationBar appearance] setTranslucent:NO];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:251/255.0 green:197/255.0 blue:111/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:61/255.0 green:52/255.0 blue:66/255.0 alpha:1.0]];
+    
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     

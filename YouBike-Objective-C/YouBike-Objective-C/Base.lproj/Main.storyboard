@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="q5j-mH-gPR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="q5j-mH-gPR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -224,8 +224,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" id="5dK-hB-FoT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.98431372549999996" green="0.7725490196" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.23921568630000001" green="0.20392156859999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.98431372549999996" green="0.7725490196" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
@@ -302,9 +300,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="4mu-h2-QdU" id="tYC-wu-zT6"/>
                         <outlet property="listGridSegmentedControl" destination="eh1-0g-sVa" id="J5p-rY-KJA"/>
-                        <outlet property="tableView" destination="O5J-wT-pFh" id="Je4-Wx-f1a"/>
+                        <outlet property="stationCollectionView" destination="4mu-h2-QdU" id="azG-wU-G0K"/>
+                        <outlet property="stationTableView" destination="O5J-wT-pFh" id="vek-uh-S8r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4K-IT-SMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -391,9 +389,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.98431372549999996" green="0.7725490196" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.23921568630000001" green="0.20392156859999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="selectedImageTintColor" red="0.98431372549999996" green="0.7725490196" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="9pK-R2-BJw" kind="relationship" relationship="viewControllers" id="lub-1R-Ci9"/>
@@ -413,11 +408,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" id="8pg-nd-BiM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.98431372549999996" green="0.7725490196" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.23921568630000001" green="0.20392156859999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.98431372549999996" green="0.7725490196" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

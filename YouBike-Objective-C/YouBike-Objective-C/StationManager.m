@@ -47,12 +47,22 @@
     });
 }
 
+-(void) getStationsWithServerTokenType: (NSString*)tokenType andToken: (NSString*) token {
+    
+    [networkHandler getStationsWithToken:[[tokenType stringByAppendingString:@" "] stringByAppendingString:token]];
+}
+
 -(void) didGetServerAccessToken: (NSData *) data {
     
     NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: nil];
     NSDictionary *dataDict = JSON[@"data"];
     NSString *tokenType = dataDict[@"tokenType"];
     NSString *token = dataDict[@"token"];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    
+    [userDefault setObject:tokenType forKey:@"tokenType"];
+    [userDefault setObject:token forKey:@"token"];
 
     [networkHandler getStationsWithToken:[[tokenType stringByAppendingString:@" "] stringByAppendingString:token]];
 }

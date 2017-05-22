@@ -12,6 +12,8 @@
     NetworkHandler *networkHandler;
     
     NSMutableArray *stations;
+    NSString *serverToken;
+    NSString *paging;
 }
 
 @synthesize delegate;
@@ -34,6 +36,7 @@
         networkHandler = [[NetworkHandler alloc] init];
         networkHandler.delegate = self;
         stations = [[NSMutableArray alloc] init];
+        paging = @"";
     }
     
     return self;
@@ -49,7 +52,26 @@
 
 -(void) getStationsWithServerTokenType: (NSString*)tokenType andToken: (NSString*) token {
     
-    [networkHandler getStationsWithToken:[[tokenType stringByAppendingString:@" "] stringByAppendingString:token]];
+    serverToken = [[tokenType stringByAppendingString:@" "] stringByAppendingString:token];
+    
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^(){
+        
+        [networkHandler getStationsWithToken:serverToken andPaging:paging];
+    });
+}
+
+-(void) getMoreStations {
+    
+    if (paging) {
+     
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^(){
+            
+            [networkHandler getStationsWithToken:serverToken andPaging:paging];
+        });
+    } else {
+        NSLog(@"=====================");
+        NSLog(@"No more station");
+    }
 }
 
 -(void) didGetServerAccessToken: (NSData *) data {
@@ -64,7 +86,9 @@
     [userDefault setObject:tokenType forKey:@"tokenType"];
     [userDefault setObject:token forKey:@"token"];
 
-    [networkHandler getStationsWithToken:[[tokenType stringByAppendingString:@" "] stringByAppendingString:token]];
+    serverToken = [[tokenType stringByAppendingString:@" "] stringByAppendingString:token];
+
+    [networkHandler getStationsWithToken:serverToken andPaging:paging];
 }
 
 -(void) didGetDataFromServer: (NSData *) data {
@@ -72,6 +96,7 @@
     NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: nil];
     NSArray *dataArray = JSON[@"data"];
     
+    paging = JSON[@"paging"][@"next"];
     
     for (int i = 0; i < dataArray.count; i++) {
         

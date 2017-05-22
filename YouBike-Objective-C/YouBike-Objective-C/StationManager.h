@@ -28,6 +28,7 @@
 
 -(void) getStationsWithFacebookToken: (NSString *) token;
 -(void) getStationsWithServerTokenType: (NSString*)tokenType andToken: (NSString*) token;
+-(void) getMoreStations;
 
 -(void) didGetDataFromServer: (NSData *) data;
 -(void) failToGetDataFromeServer;

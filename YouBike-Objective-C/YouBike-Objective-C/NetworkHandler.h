@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#define endPointArray @"/sign-in/facebook",@"/stations", nil
+#define endPointArray @"/sign-in/facebook",@"/stations", @"/stations?paging=", nil
 #define methodArray @"GET", @"POST", nil
 #define headerArray @"Authorization", @"Content-Type", nil
 
@@ -24,7 +24,8 @@
 typedef enum {
     
     signin = 1,
-    stations
+    stations,
+    paging
     
 } EndPoint;
 
@@ -43,7 +44,7 @@ typedef enum {
 } Header;
 
 -(void) getServerAccessTokenWith: (NSString *) token;
--(void) getStationsWithToken: (NSString *) token;
+-(void) getStationsWithToken: (NSString *) token andPaging: (NSString*) pagingString;
 
 @end
 

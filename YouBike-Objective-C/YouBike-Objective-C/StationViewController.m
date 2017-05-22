@@ -178,4 +178,16 @@
     [stationCollectionView reloadData];
 }
 
+-(void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    CGSize size = [scrollView contentSize];
+    CGPoint offset = [scrollView contentOffset];
+    float bottomEdge = scrollView.frame.size.height + offset.y;
+    
+    if(bottomEdge >= size.height){
+        NSLog(@"=================");
+        NSLog(@"Reach the end of scroll view");
+        [datamodel getMoreStations];
+    }
+}
 @end

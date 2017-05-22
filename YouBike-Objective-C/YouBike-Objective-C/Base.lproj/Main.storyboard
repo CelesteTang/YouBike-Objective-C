@@ -221,7 +221,7 @@
             <objects>
                 <navigationController storyboardIdentifier="StationNavigationController" id="9pK-R2-BJw" customClass="StationNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Stations" image="tab-bar-bike" id="tfU-hq-IVd"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="blackTranslucent" translucent="NO" id="5dK-hB-FoT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" id="5dK-hB-FoT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -405,7 +405,7 @@
                 <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="fzb-RP-lYi" customClass="ProfileNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="tab-bar-profile" id="cKw-IQ-WEd"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="blackTranslucent" translucent="NO" id="8pg-nd-BiM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" id="8pg-nd-BiM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

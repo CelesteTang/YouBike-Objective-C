@@ -41,7 +41,7 @@
     station5 = [[Station alloc]initWithName:@"信義區 / 興雅國中" Address:@"松仁路/松仁路95巷(東南側)" NumberOfRemainingBikes:@"9" Latitude:@25.0365638889 Longitude:@121.5686639];
     
     stations = [[NSArray alloc]initWithObjects:station1, station2, station3, station4, station5, nil];
-    
+        
     self.title = @"YouBike";
     
     tableView.hidden = NO;
@@ -119,7 +119,7 @@
 
     cell.viewMapButton.layer.cornerRadius = 4;
     cell.viewMapButton.layer.borderWidth = 1;
-    cell.viewMapButton.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:204/255 green:113/255 blue:93/255 alpha:1]);
+    cell.viewMapButton.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:204/255.0 green:113/255.0 blue:93/255.0 alpha:1.0]);
     [cell.viewMapButton addTarget:self action:@selector(viewMap:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;

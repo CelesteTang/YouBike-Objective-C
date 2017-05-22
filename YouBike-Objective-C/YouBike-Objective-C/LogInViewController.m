@@ -27,7 +27,7 @@
     
     _logoImageView.layer.cornerRadius = _logoImageView.frame.size.width / 2;
     _logoImageView.layer.borderWidth = 1;
-    _logoImageView.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:61/255 green:52/255 blue:66/255 alpha:1]);
+    _logoImageView.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:61/255.0 green:52/255.0 blue:66/255.0 alpha:1.0]);
     
     [_logInButton addTarget:self action:@selector(logIn) forControlEvents:UIControlEventTouchUpInside];
 }

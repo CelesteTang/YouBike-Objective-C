@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "StationManager.h"
+#import "TabBarController.h"
+#import "StationNavigationController.h"
+#import "StationViewController.h"
 
 
 @interface AppDelegate ()
@@ -31,16 +34,26 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
-    
-//    StationManager* manager = [StationManager sharedInstance];
-//    
-//    [manager getStationsWithFacebookToken:@"EAACEdEose0cBAKoU3oKvLRlN1ARfIqxWvZCNkhwnAP5c2jXWwhcDnah3A3R99JB0vZBXfMT82qEpG5nzyty1mRv3UNRNrBtbwoyVGyLSXLVHMdg3MBPzCzRxBSSlliPN4XYNfXZBkJ6pJbSzmX3a98dDgqh5DLfzZAHDJWPh4SL4BNgrMjCmhL1zyZBN8lycZD"];
-    
     if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]) {
         
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: [NSBundle mainBundle]];
-        UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:
+        
+        TabBarController *vc = [storyboard instantiateViewControllerWithIdentifier:
                                 @"TabBarController"];
+        
+        StationNavigationController *mainVC = [vc viewControllers][0];
+        
+        StationViewController *stationVC = [mainVC viewControllers][0];
+        
+        stationVC.datamodel = [StationManager sharedInstance];
+        
+        [StationManager sharedInstance].delegate = stationVC;
+        
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+        NSString *tokenType = [[NSUserDefaults standardUserDefaults] objectForKey:@"tokenType"];
+        
+        [[StationManager sharedInstance] getStationsWithServerTokenType:tokenType andToken:token];
+        
         _window.rootViewController = vc;
         
     }

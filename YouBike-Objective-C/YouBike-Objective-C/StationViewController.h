@@ -18,18 +18,11 @@
 
 @property (strong, atomic, readwrite) StationManager *datamodel;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *stationTableView;
 
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *stationCollectionView;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *listGridSegmentedControl;
-
-@property Station *station1;
-@property Station *station2;
-@property Station *station3;
-@property Station *station4;
-@property Station *station5;
-@property NSArray *stations;
 
 -(void) didGetStationFromServer;
 

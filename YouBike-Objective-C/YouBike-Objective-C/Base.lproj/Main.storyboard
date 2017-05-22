@@ -300,9 +300,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="collectionView" destination="4mu-h2-QdU" id="tYC-wu-zT6"/>
                         <outlet property="listGridSegmentedControl" destination="eh1-0g-sVa" id="J5p-rY-KJA"/>
-                        <outlet property="tableView" destination="O5J-wT-pFh" id="Je4-Wx-f1a"/>
+                        <outlet property="stationCollectionView" destination="4mu-h2-QdU" id="azG-wU-G0K"/>
+                        <outlet property="stationTableView" destination="O5J-wT-pFh" id="vek-uh-S8r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4K-IT-SMR" userLabel="First Responder" sceneMemberID="firstResponder"/>

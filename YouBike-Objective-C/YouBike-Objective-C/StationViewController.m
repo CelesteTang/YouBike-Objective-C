@@ -21,41 +21,27 @@
 }
 
 @synthesize datamodel;
-@synthesize tableView;
-@synthesize collectionView;
+@synthesize stationTableView;
+@synthesize stationCollectionView;
 @synthesize listGridSegmentedControl;
-@synthesize station1;
-@synthesize station2;
-@synthesize station3;
-@synthesize station4;
-@synthesize station5;
-@synthesize stations;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    station1 = [[Station alloc]initWithName:@"信義區 / 捷運市政府站(3號出口)" Address:@"忠孝東路/松仁路(東南側)" NumberOfRemainingBikes:@"20" Latitude:@25.0408578889 Longitude:@121.567904444];
-    station2 = [[Station alloc]initWithName:@"大安區 / 捷運國父紀念館站(2號..." Address:@"忠孝東路四段/光復南路口(..." NumberOfRemainingBikes:@"3" Latitude:@25.041254 Longitude:@121.55742];
-    station3 = [[Station alloc]initWithName:@"信義區 / 台北市政府" Address:@"台北市政府東門(松智路)" NumberOfRemainingBikes:@"15" Latitude:@25.0377972222 Longitude:@121.565169444];
-    station4 = [[Station alloc]initWithName:@"信義區 / 市民廣場" Address:@"市府路/松壽路(西北側)" NumberOfRemainingBikes:@"8" Latitude:@25.0360361111 Longitude:@121.562325];
-    station5 = [[Station alloc]initWithName:@"信義區 / 興雅國中" Address:@"松仁路/松仁路95巷(東南側)" NumberOfRemainingBikes:@"9" Latitude:@25.0365638889 Longitude:@121.5686639];
-    
-    stations = [[NSArray alloc]initWithObjects:station1, station2, station3, station4, station5, nil];
         
     self.title = @"YouBike";
     
-    tableView.hidden = NO;
-    collectionView.hidden = YES;
+    stationTableView.hidden = NO;
+    stationCollectionView.hidden = YES;
     
-    tableView.delegate = self;
-    tableView.dataSource = self;
+    stationTableView.delegate = self;
+    stationTableView.dataSource = self;
     UINib *nibOfTable = [UINib nibWithNibName:@"StationTableViewCell" bundle:nil];
-    [tableView registerNib:nibOfTable forCellReuseIdentifier:@"StationTableViewCell"];
+    [stationTableView registerNib:nibOfTable forCellReuseIdentifier:@"StationTableViewCell"];
     
-    collectionView.delegate = self;
-    collectionView.dataSource = self;
+    stationCollectionView.delegate = self;
+    stationCollectionView.dataSource = self;
     UINib *nibOfCollection = [UINib nibWithNibName:@"StationCollectionViewCell" bundle:nil];
-    [collectionView registerNib:nibOfCollection forCellWithReuseIdentifier:@"StationCollectionViewCell"];
+    [stationCollectionView registerNib:nibOfCollection forCellWithReuseIdentifier:@"StationCollectionViewCell"];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setSectionInset:UIEdgeInsetsMake(14, 14, 14, 14)];
@@ -70,13 +56,13 @@
     switch (sender.selectedSegmentIndex) {
             
         case 0:
-            tableView.hidden = NO;
-            collectionView.hidden = YES;
+            stationTableView.hidden = NO;
+            stationCollectionView.hidden = YES;
             break;
             
         case 1:
-            tableView.hidden = YES;
-            collectionView.hidden = NO;
+            stationTableView.hidden = YES;
+            stationCollectionView.hidden = NO;
             break;
             
         default:
@@ -111,8 +97,6 @@
     
     Station *station = [datamodel getStationsWith:indexPath.section andRow:indexPath.row];
     
-    //Station *station = self->stations[indexPath.row];
-
     cell.nameLabel.text = station.name;
     cell.addressLabel.text = station.address;
     cell.numberLabel.text = station.numberOfRemainingBikes;
@@ -190,8 +174,8 @@
     
     NSLog(@"=========================");
     NSLog(@"Reload data");
-    [tableView reloadData];
-    [collectionView reloadData];
+    [stationTableView reloadData];
+    [stationCollectionView reloadData];
 }
 
 @end

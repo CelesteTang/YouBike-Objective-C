@@ -30,26 +30,26 @@
     
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:token,@"accessToken", nil];
     
-    [self requestToServer:signin withMethod:post andDict:dict andHeaderValue:@"application/json" andHeader:ContentType compeltionHandler: ^void(NSData* data){
+    [self requestToServer:signin endPointKey: @"" withMethod:post andDataDict:dict andHeaderValue:@"application/json" andHeader:ContentType compeltionHandler: ^void(NSData* data){
         
         [delegate didGetServerAccessToken: data];
     }];
 }
 
--(void) getStationsWithToken: (NSString *) token {
+-(void) getStationsWithToken: (NSString *) token andPaging: (NSString*) pagingString{
     
-    [self requestToServer:stations withMethod:get andDict:nil andHeaderValue:token andHeader:Authorization compeltionHandler: ^void(NSData* data){
+    [self requestToServer:paging endPointKey: pagingString withMethod:get andDataDict:nil andHeaderValue:token andHeader:Authorization compeltionHandler: ^void(NSData* data){
         
         [delegate didGetDataFromServer: data];
     }];
 }
 
--(void) requestToServer:(EndPoint)endPoint withMethod:(Method) method andDict: (NSDictionary *) body andHeaderValue: (NSString *) headerValue andHeader: (Header) header compeltionHandler: (void(^)(NSData*)) completion {
+-(void) requestToServer:(EndPoint)endPoint endPointKey:(NSString*) key withMethod:(Method) method andDataDict: (NSDictionary *) body andHeaderValue: (NSString *) headerValue andHeader: (Header) header compeltionHandler: (void(^)(NSData*)) completion {
     
     NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig];
     
-    NSString *endPointString = [self endPointEnumToString:endPoint];
+    NSString *endPointString = [[self endPointEnumToString:endPoint] stringByAppendingString:key];
     NSURL *url = [NSURL URLWithString: [baseURL stringByAppendingString:endPointString]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
